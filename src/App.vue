@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <div id="header">{{ Topmessage }}</div>
+    <topmenu />
+    <div id="appzone">
+      <router-view />
+    </div>
+    <div id="footer">
+      {{ Version }}
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import topmenu from "./views/topmenu";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
-</script>
+    topmenu
+  },
+  setup() {
+    const Version = "cams2021 1.01, May 07 2021";
+    const Topmessage = "cams21 helper";
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+    return { Version, Topmessage };
+  }
+};
+</script>
