@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <div id="header">{{ Topmessage }}</div>
     <topmenu />
     <div id="appzone">
       <router-view />
-    </div>
-    <div id="footer">
-      {{ Version }}
     </div>
   </div>
 </template>

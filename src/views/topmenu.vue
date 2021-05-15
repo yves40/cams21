@@ -26,7 +26,8 @@
               <li><a href="">Foscam site</a></li>
               <li><a href="">Contact</a></li>
               <li><a @click="callabout" href="">About</a></li>
-              <router-link tag="li" :to="{name: 'about' }">About Test</router-link>
+              <li><router-link tag="li" :to="{name: 'about' }">About Test</router-link></li>
+              
             </ul>
           </div>
         </nav>
@@ -35,9 +36,7 @@
       <section class="footer">
         <h4>About Us</h4>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil maiores
-          architecto animi<br />
-          ducimus, excepturi molestias quis error magni mollitia veniam?
+          We're RECO dev
         </p>
         <div class="icons">
           <i class="fa fa-facebook"></i>
@@ -54,7 +53,7 @@
 <script>
 export default {
   setup() {
-    const Version = "topmenu 1.08: May 07 2021";
+    const Version = "topmenu 1.09: May 15 2021";
 
     var navlinks = document.getElementById("navLinks");
 

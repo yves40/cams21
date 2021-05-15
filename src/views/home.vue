@@ -1,23 +1,19 @@
 <template>
-<div>
-  <div class="moduletitle">{{Version}}</div>
-  <div class="home">
-    Hello I'm your home vue
+  <div>
+    <div class="home">Hello I'm your home vue</div>
   </div>
-</div>
 </template>
 
 <script>
 // @ is an alias to /src
 
 export default {
-  name: 'Home',
-  components: {
-  },
+  name: "Home",
+  components: {},
   setup() {
-    const Version = 'Home.vue 1.00, May 07 2021'
+    const Version = "Home.vue 1.01, May 15 2021";
 
     return { Version };
-  }
-}
+  },
+};
 </script>
