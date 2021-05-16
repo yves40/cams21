@@ -15,12 +15,11 @@
       />
     </head>
     <body>
-      <section class="header">
         <nav>
-          <a href="index.html"><img src="../images/logo.png" alt=""/></a>
           <div class="nav-links" id="navLinks">
             <i class="fa fa-times" onclick="hideMenu()"></i>
             <ul>
+              <li><a href="/">Home</a></li>
               <li><a href="">Login</a></li>
               <li><a href="">Heden Site</a></li>
               <li><a href="">Foscam site</a></li>
@@ -31,21 +30,6 @@
             </ul>
           </div>
         </nav>
-      </section>
-
-      <section class="footer">
-        <h4>About Us</h4>
-        <p>
-          We're RECO dev
-        </p>
-        <div class="icons">
-          <i class="fa fa-facebook"></i>
-          <i class="fa fa-twitter"></i>
-          <i class="fa fa-instagram"></i>
-          <i class="fa fa-linkedin"></i>
-        </div>
-        <p>Made with <i class="fa fa-heart-o"></i> Easy Tutorials</p>
-      </section>
     </body>
   </html>
 </template>
@@ -53,7 +37,7 @@
 <script>
 export default {
   setup() {
-    const Version = "topmenu 1.09: May 15 2021";
+    const Version = "topmenu 1.10: May 16 2021";
 
     var navlinks = document.getElementById("navLinks");
 

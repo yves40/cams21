@@ -1,22 +1,27 @@
 <template>
-  <div id="app">
+  <section class="header">
     <topmenu />
-    <div id="appzone">
+  </section>
+  <section class="appzone">
       <router-view />
-    </div>
-  </div>
+  </section>
+  <section class="footer">
+    <bottom />
+  </section>
 </template>
 
 <script>
 import topmenu from "./views/topmenu";
+import bottom from "./views/footer"
 
 export default {
   name: "App",
   components: {
-    topmenu
+    topmenu,
+    bottom
   },
   setup() {
-    const Version = "cams2021 1.01, May 07 2021";
+    const Version = "cams2021 1.04, May 16 2021";
     const Topmessage = "cams21 helper";
 
     return { Version, Topmessage };
