@@ -10,10 +10,12 @@
       <div class="facilities">
         <p class="underlined">Your contacts</p>
         <p></p>
-        <p>yves.toubhans@free.fr</p>
-        <p>elis.toubhans@free.fr</p>
-        <p>isa.toubhans@free.fr</p>
-        <p>ben.toubhans@free.fr</p>
+        <div>
+          <p class="Hcompressed">yves.toubhans@free.fr/Stock holder</p>
+          <p class="Hcompressed">elis.toubhans@free.fr/Stock holder</p>
+          <p class="Hcompressed">isa.toubhans@free.fr/Project Manager</p>
+          <p class="Hcompressed">ben.toubhans@free.fr/Senior developer</p>
+        </div>
       </div>
     </body>
   </html>
