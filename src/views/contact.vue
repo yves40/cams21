@@ -8,13 +8,14 @@
     </head>
     <body>
       <div class="facilities">
-        <p class="underlined">Your contacts</p>
+        <h4>Contacts</h4>
+        <p class="underlined">Send an email to</p>
         <p></p>
         <div>
-          <p class="Hcompressed">yves.toubhans@free.fr/Stock holder</p>
-          <p class="Hcompressed">elis.toubhans@free.fr/Stock holder</p>
-          <p class="Hcompressed">isa.toubhans@free.fr/Project Manager</p>
-          <p class="Hcompressed">ben.toubhans@free.fr/Senior developer</p>
+          <p class="Hcompressed">yves@free.fr/Stock holder</p>
+          <p class="Hcompressed">elis.stock@free.fr/Stock holder</p>
+          <p class="Hcompressed">isa.redbull@free.fr/Project Manager</p>
+          <p class="Hcompressed">ben.bnp@free.fr/Senior developer</p>
         </div>
       </div>
     </body>
