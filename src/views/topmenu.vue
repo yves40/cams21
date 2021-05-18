@@ -19,13 +19,13 @@
           <div class="nav-links" id="navLinks">
             <i class="fa fa-times" onclick="hideMenu()"></i>
             <ul>
-              <li><a href="/">Home</a></li>
+              <li><router-link :to="{name: 'home' }">Home</router-link></li>
               <li><a href="">Login</a></li>
-              <li><a href="">Heden Site</a></li>
-              <li><a href="">Foscam site</a></li>
-              <li><a href="">Contact</a></li>
+              <li><a target="_blank" href="http://www.heden.fr/">Heden</a></li>
+              <li><a target="_blank" href="https://www.foscam-france.fr/">Foscam</a></li>
+              <li><router-link :to="{name: 'contact' }">Contacts</router-link></li>
               <li><a @click="callabout" href="">About</a></li>
-              <li><router-link tag="li" :to="{name: 'about' }">About Test</router-link></li>
+              <li><router-link :to="{name: 'about' }">About Test</router-link></li>
               
             </ul>
           </div>
@@ -37,7 +37,7 @@
 <script>
 export default {
   setup() {
-    const Version = "topmenu 1.10: May 16 2021";
+    const Version = "topmenu 1.12: May 18 2021";
 
     var navlinks = document.getElementById("navLinks");
 
