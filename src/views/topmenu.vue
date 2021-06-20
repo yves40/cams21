@@ -26,9 +26,9 @@
               <li><router-link :to="{name: 'contact' }">Contacts</router-link></li>
               <li><a @click="callabout" href="">About</a></li>
               <li><router-link :to="{name: 'about' }">About Test</router-link></li>
-              
             </ul>
           </div>
+          <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
     </body>
   </html>
