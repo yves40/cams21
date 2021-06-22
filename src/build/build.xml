@@ -3,6 +3,7 @@
     build.xml
 
     Jun 19 2021       Initial. cams2021 no longer use bootstrap...
+    Jun 20 2021       No longer copy .bashrc from node env to root login
 
 ****************************************************************************************************** -->
 <project name="assessment" default="help" basedir="." >
@@ -33,7 +34,7 @@
             <param name="remoteaccountpass" value="${zerasp.nodepassword}"/>
         </antcall>
         <!-- Manage the .bashrc file -->
-        <sshexec command="cp ${zerasp.approot}/cams2021/src/shell/zerasp/node/.bashrc ~/.bashrc" host="${zerasp.server}" username="${zerasp.nodeuser}"
+        <sshexec command="cp ${zerasp.approot}/cams2021/src/shell/.bashrc ~/.bashrc" host="${zerasp.server}" username="${zerasp.nodeuser}"
                  password="${zerasp.nodepassword}"
                  trust="true" verbose="${zip.verbosemode}"/>
         <!-- chmod for shell script -->
