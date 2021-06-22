@@ -304,3 +304,8 @@ h3 {
 .underlined {
   text-decoration: underline;
 }
+.Hcompressed {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 2px;
+}
