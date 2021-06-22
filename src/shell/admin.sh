@@ -8,9 +8,10 @@
 #	  Mar 09 2020  	Refresh for zerasp
 #	  Jun 19 2021  	mongodb service changed to mongod service
 #                 Change CAMSHOME to point on cams2021
+#	  Jun 22 2021  	Some new command line qualifiers
 #--------------------------------------------------------------------------------
-VERSION="admin.sh v 1.13, "
-VERSIONDATE="Jun 19 2021 "
+VERSION="admin.sh v 1.16, "
+VERSIONDATE="Jun 22 2021 "
 LOG="/tmp/nodeadmin.log"
 CAMSHOME='/home/node/cams2021'
 #--------------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Usage()
   echo
   echo
   echo "./admin.sh start|stop|status [procselector]"
+  echo "./admin.sh -v"
+  echo "./admin.sh --version"
   echo 
   echo "With start, can optionnaly specify a procselector."
   echo "Possible values are : all|web|api|mongo"
@@ -146,7 +149,7 @@ Status()
   echo 'Node and mongodb processes status'
   echo
   ps -edf | grep -v grep | grep -i -e 'webpack-dev-server
-cams/src/server
+server.js
 mongod' > processlist
 
   while read line
@@ -158,6 +161,24 @@ mongod' > processlist
   done < processlist
   rm -f processlist
   echo
+  echo "Shell variables:"
+  echo "-----------------------------------------"
+  echo "LOG          : $LOG"
+  echo "CAMSHOME     : $CAMSHOME"
+  echo "NODE         : $NODE"
+  echo "MONGO        : $MONGO"
+  echo "NODEDEVMODE  : $NODEDEVMODE"
+  echo "CAMUSER      : $CAMUSER"
+  echo "COMPUTERNAME : $COMPUTERNAME"
+  echo
+}
+#---------------------------------------------------------------------------------------
+#   Just display version
+#---------------------------------------------------------------------------------------
+showVersion()
+{
+  echo
+  echo $VERSION $VERSIONDATE
   echo
 }
 
@@ -165,9 +186,6 @@ mongod' > processlist
 #   Start here
 #---------------------------------------------------------------------------------------
 clear
-echo
-echo $VERSION $VERSIONDATE
-echo
 if [ -z $1 ]
 then
   Usage
@@ -205,6 +223,10 @@ case $1 in
   'stop')   Stop
             ;;
   'status') Status
+            ;;
+  '-v') showVersion
+            ;;
+  '--version') showVersion
             ;;
   *)        Status
             ;;

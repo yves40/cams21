@@ -4,6 +4,7 @@
 #	Jun 19 2021		Initial
 #	Jun 20 2021		Fix some PATH problems
 #	Jun 21 2021		Remove echo messages to avoid ant deployment process failure
+#	Jun 22 2021		ll alias
 #----------------------------------------------------------------------------------------
 
 # Source global definitions
@@ -19,9 +20,9 @@ export WEB=/var/www/html
 export HOST=zeraspeth
 
 # export NODE=/TOOLS/node
-export NODE=/TOOLS/node-v12.16.1-linux-x64
+export NODE=/usr/bin
 export PATH=$NODE/bin:$PATH
-export MONGO=/TOOLS/mongo/mongodb-linux-x86_64-rhel62-3.4.10/
+export MONGO=/usr/bin
 export PATH=$MONGO/bin:$PATH
 export NODE_DISABLE_COLORS=1
 
@@ -43,11 +44,12 @@ alias shsys='ps -edf | grep -i '
 alias hh='history | grep -i '
 alias lrtl='ls -rtl'
 alias lal='ls -al'
+alias ll='ls -l'
 alias motd='cat /etc/motd'
 alias sshagent='eval "$(ssh-agent -s)"'
 alias mongo='mongo --port 27017 --quiet'
 alias nodemon='nodemon --no-colors'
 alias renv='. ~/.bashrc'
 alias forever='$CAMS/node_modules/forever/bin/forever --no-colors'
-alias nod='$CAMSHOME/shell/src/nodeadmin.sh'
+alias nod='$CAMSHOME/src/shell/admin.sh'
 
