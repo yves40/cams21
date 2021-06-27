@@ -13,11 +13,12 @@
         <echo message="************************ @  Targets available "></echo>
         <echo message=""></echo>
         <echo message="************************ @  .......... cams2021zerasp   : cams2021 on Raspberry pi"></echo>
+        <echo message="************************ @  .......... cams2021vboxnode : cams2021 on VirtualBox inside asusp7"></echo>
         <echo message=""></echo>
     </target>
 
     <!-- ===================================================================================== -->
-    <!-- Hosts deployment-->
+    <!-- Hosts deployment : zerasp-->
     <!-- ===================================================================================== -->
     <target name="cams2021zerasp" depends="cleanup">
         <echo message="************************ @ deploy node cams to ${zerasp.server}"></echo>
@@ -43,6 +44,32 @@
                  trust="true" verbose="${zip.verbosemode}"/>
     </target>
 
+    <!-- ===================================================================================== -->
+    <!-- Hosts deployment : vboxnodelo -->
+    <!-- ===================================================================================== -->
+    <target name="cams2021vboxnode" depends="cleanup">
+        <echo message="************************ @ deploy node cams to ${vboxnodelo.server}"></echo>
+        <antcall target="nodekit">
+            <param name="shellnode" value="vboxnodelo"/>
+        </antcall>
+        <!-- The application files -->
+        <antcall target="serverupdate">
+            <param name="remoteserver" value="${vboxnodelo.server}"/>
+            <param name="localdir" value="${build.workdir}"/>
+            <param name="localzip" value="cams2021.zip"/>
+            <param name="remotenetdir" value="${vboxnodelo.approot}/cams2021"/>
+            <param name="remoteaccount" value="${vboxnodelo.nodeuser}"/>
+            <param name="remoteaccountpass" value="${vboxnodelo.nodepassword}"/>
+        </antcall>
+        <!-- Manage the .bashrc file -->
+        <sshexec command="cp ${vboxnodelo.approot}/cams2021/src/shell/.bashrc ~/.bashrc" host="${vboxnodelo.server}" username="${vboxnodelo.nodeuser}"
+                 password="${vboxnodelo.nodepassword}"
+                 trust="true" verbose="${zip.verbosemode}"/>
+        <!-- chmod for shell script -->
+        <sshexec command="chmod +x ${vboxnodelo.approot}/cams2021/src/shell/*.sh" host="${vboxnodelo.server}" username="${vboxnodelo.nodeuser}"
+                 password="${vboxnodelo.nodepassword}"
+                 trust="true" verbose="${zip.verbosemode}"/>
+    </target>
     <!-- ===================================================================================== -->
     <!-- node Vue web app kit building -->
     <!-- ===================================================================================== -->
