@@ -14,6 +14,7 @@
         <echo message=""></echo>
         <echo message="************************ @  .......... cams2021zerasp   : cams2021 on Raspberry pi"></echo>
         <echo message="************************ @  .......... cams2021vboxnode : cams2021 on VirtualBox inside asusp7"></echo>
+        <echo message="************************ @  .......... rootfileszerasp  : Deploy some unix admin files to root"></echo>
         <echo message=""></echo>
     </target>
 
@@ -71,6 +72,14 @@
                  trust="true" verbose="${zip.verbosemode}"/>
     </target>
     <!-- ===================================================================================== -->
+    <!-- Hosts deployment : rootfileszerasp -->
+    <!-- ===================================================================================== -->
+    <target name="rootfileszerasp">
+        <echo message="************************ @ deploy some linux admin files to  ${zerasp.server}"></echo>
+        <!-- The motd file -->
+        <scp file="${zerasp.approot}/cams2021/src/shell/motd" todir="node:manager1@${zerasp.server}:~"/>
+    </target>
+    <!-- ===================================================================================== -->
     <!-- node Vue web app kit building -->
     <!-- ===================================================================================== -->
     <target name="nodebatchkit">
@@ -89,6 +98,7 @@
             <fileset dir="${build.srcdir}" casesensitive="true">
                 <include name="**/admin.sh"/>
                 <include name="**/.bashrc"/>
+                <include name="**/motd.txt"/>
                 <include name="**/${shellnode}/**"/>
                 <include name="**/*.html"/>
                 <include name="**/*.js"/>
