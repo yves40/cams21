@@ -1,0 +1,18 @@
+
+
+--------------------------------------------------------------------------------------------
+    M e s s a g e   O f   T h e   D a y, as of Jun 27 2021
+--------------------------------------------------------------------------------------------
+
+cd $CAMSHOME : Points to the source root dir
+
+Useful aliases
+
+motd  : Message of the day
+
+nod status
+nod start api : will start server.js
+nod start mongo
+nod start web
+
+

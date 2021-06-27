@@ -54,4 +54,5 @@ alias renv='. ~/.bashrc'
 alias forever='$CAMS/node_modules/forever/bin/forever --no-colors'
 alias nod='$CAMSHOME/src/shell/admin.sh'
 
-cat $CAMSHOME/src/shell/motd.txt
+# No cat in .bashrc as it breaks the ant deplyment script.......!!!!!!!!!!
+# cat $CAMSHOME/src/shell/motd.txt
