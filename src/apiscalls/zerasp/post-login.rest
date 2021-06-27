@@ -1,0 +1,7 @@
+POST http://zerasp:8081/users/login
+content-type: application/json
+
+{
+	"email": "yves@free.fr",
+	"password": "manager"
+}

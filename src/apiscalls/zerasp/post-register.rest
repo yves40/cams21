@@ -1,0 +1,9 @@
+POST http://zerasp:8081/users/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Reco40",
+    "email": "reco40@free.fr",
+    "password": "manager",
+    "description": "This is reco host"
+}

@@ -1,0 +1,5 @@
+GET http://zerasp:8081/users/list
+Content-Type: application/json
+Authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNmZiNTIxM2YxOTdjMTFjNDdmYmY3OCIsImVtYWlsIjoieXZlc0BmcmVlLmZyIiwiaWF0IjoxNjI0Nzg0NjUwLCJleHAiOjE2MjQ3ODUyNTB9.Xs-30ozI-pagcJRX0cZ9FQ33aAWssQv9CHwdJXkNbNY
+
+

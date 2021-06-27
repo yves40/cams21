@@ -1,0 +1,5 @@
+GET http://zerasp:8081/users/listemailsids
+Content-Type: application/json
+Authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZDU3OWE3YTEyY2VmNjU5NGEwZTEyMCIsImVtYWlsIjoiYm9zc0BmcmVlLmZyIiwiaWF0IjoxNTc0NDQzMDc1LCJleHAiOjE1NzQ0NDQ4NzV9._zMnHw5kYkNL2h1u6HUlZzyM7nIMmRqbAQi2N0ZmKnQ
+
+

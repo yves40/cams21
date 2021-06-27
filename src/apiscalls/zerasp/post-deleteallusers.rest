@@ -1,0 +1,2 @@
+POST http://zerasp:8081/users/deleteall
+content-type: application/json

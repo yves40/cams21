@@ -1,0 +1,4 @@
+GET http://zerasp:8081/mongo/status
+Content-Type: application/json
+
+
