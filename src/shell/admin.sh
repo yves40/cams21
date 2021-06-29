@@ -9,9 +9,10 @@
 #	  Jun 19 2021  	mongodb service changed to mongod service
 #                 Change CAMSHOME to point on cams2021
 #	  Jun 22 2021  	Some new command line qualifiers
+#	  Jun 29 2021  	RECO start new cams2021 web app on zerasp
 #--------------------------------------------------------------------------------
-VERSION="admin.sh v 1.16, "
-VERSIONDATE="Jun 22 2021 "
+VERSION="admin.sh v 1.19, "
+VERSIONDATE="Jun 29 2021 "
 LOG="/tmp/nodeadmin.log"
 CAMSHOME='/home/node/cams2021'
 #--------------------------------------------------------------------------------
@@ -66,10 +67,10 @@ Start()
             cd $CAMSHOME
             case $x in 
               'zerasp')    # avoid -watch on the raspberry to spare some cpu
-                        npm run devxr&
+                        npm run dev&
                       ;;
               'vboxnode')  
-                        npm run devx&
+                        npm run dev&
                       ;;
             esac
             echo
@@ -110,7 +111,8 @@ Stop()
   case $proclist in 
     ALL)    log "Stop all node processes (except mongo)"
             ps -edf | grep -v grep | grep -i -e 'webpack-dev-server
-cams/src/server' > processlist
+/src/server
+vue-cli-service' > processlist
             while read line
             do  
               pid=`echo "$line" | awk '/ / { print $2 }';`
@@ -120,7 +122,8 @@ cams/src/server' > processlist
             rm -f processlist
             ;;
     WEB)    log "Stop the WEBpack node process"
-            ps -edf | grep -v grep | grep -i -e 'webpack-dev-server' > processlist
+            ps -edf | grep -v grep | grep -i -e 'webpack-dev-server
+vue-cli-service' > processlist
             while read line
             do  
               pid=`echo "$line" | awk '/ / { print $2 }';`
@@ -146,10 +149,13 @@ cams/src/server' > processlist
 Status()
 {
   echo
+  echo $VERSION $VERSIONDATE
   echo 'Node and mongodb processes status'
+  echo '-------------------------------------------------'
   echo
   ps -edf | grep -v grep | grep -i -e 'webpack-dev-server
 server.js
+vue-cli-service
 mongod' > processlist
 
   while read line
