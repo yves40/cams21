@@ -15,7 +15,6 @@
         <i class="fa fa-instagram"></i>
         <i class="fa fa-linkedin"></i>
       </div>
-      <p>Made with <i class="fa fa-heart-o"></i> Easy Tutorials</p>
     </body>
   </html>
 </template>

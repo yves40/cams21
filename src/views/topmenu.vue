@@ -20,11 +20,11 @@
             <i class="fa fa-times" onclick="hideMenu()"></i>
             <ul>
               <li><router-link :to="{name: 'home' }">Home</router-link></li>
+              <li><a target="_blank" href="html-css/University/index.html">Test css menu</a></li>
               <li><a href="">Login</a></li>
               <li><a target="_blank" href="http://www.heden.fr/">Heden</a></li>
               <li><a target="_blank" href="https://www.foscam-france.fr/">Foscam</a></li>
               <li><router-link :to="{name: 'contact' }">Contacts</router-link></li>
-              <li><a @click="callabout" href="">About</a></li>
               <li><router-link :to="{name: 'about' }">About Test</router-link></li>
             </ul>
           </div>
@@ -37,7 +37,7 @@
 <script>
 export default {
   setup() {
-    const Version = "topmenu 1.12: May 18 2021";
+    const Version = "topmenu 1.13: Jul 03 2021";
 
     var navlinks = document.getElementById("navLinks");
 
@@ -47,15 +47,11 @@ export default {
     function hideMenu() {
       navlinks.style.right = "-200px";
     }
-    function callabout() {
-      console.log('*');
-    }
 
     return {
       Version,
       showMenu,
-      hideMenu,
-      callabout
+      hideMenu
     };
   }
 };
