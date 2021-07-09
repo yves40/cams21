@@ -16,7 +16,7 @@
     </head>
     <body>
         <nav>
-          <div class="nav-links" id="navLinks" v-show="state.menuvisible" v-bind:style="{ right: state.right }">
+          <div class="nav-links" id="navLinks" v-bind:style="{ right: state.right }">
             <i class="fa fa-times" v-on:click="hideMenu"></i>
             <ul>
               <li><router-link :to="{name: 'home' }">Home</router-link></li>
@@ -28,9 +28,8 @@
               <li><router-link :to="{name: 'about' }">About Test</router-link></li>
             </ul>
           </div>
-          <div v-show="!state.menuvisible">
-            <i class="fa fa-bars" v-on:click="showMenu" ></i>
-          </div>
+          <p></p>
+          <i class="fa fa-bars" v-on:click="showMenu" ></i>
         </nav>
     </body>
   </html>
@@ -40,7 +39,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.15: Jul 09 2021";
+    const Version = "topmenu 1.16: Jul 09 2021";
     let state = reactive ( {
       menuvisible:  true,
       right: '-200px'
