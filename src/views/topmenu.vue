@@ -16,8 +16,8 @@
     </head>
     <body>
         <nav>
-          <div class="nav-links" id="navLinks">
-            <i class="fa fa-times" onclick="hideMenu()"></i>
+          <div class="nav-links" id="navLinks" v-show="state.menuvisible">
+            <i class="fa fa-times" v-on:click="hideMenu"></i>
             <ul>
               <li><router-link :to="{name: 'home' }">Home</router-link></li>
               <li><a target="_blank" href="html-css/University/index.html">Test css menu</a></li>
@@ -28,30 +28,41 @@
               <li><router-link :to="{name: 'about' }">About Test</router-link></li>
             </ul>
           </div>
-          <i class="fa fa-bars" onclick="showMenu()"></i>
+          <div v-show="!state.menuvisible">
+            <i class="fa fa-bars" v-on:click="showMenu" ></i>
+          </div>
         </nav>
     </body>
   </html>
 </template>
 
 <script>
+import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.13: Jul 03 2021";
-
-    var navlinks = document.getElementById("navLinks");
+    const Version = "topmenu 1.14: Jul 09 2021";
+    let state = reactive ( {
+      menuvisible:  true
+    })
 
     function showMenu() {
-      navlinks.style.right = "0";
+      console.log("Show");
+      state.menuvisible = true;
+      const docsample = document.documentElement.navlinks;
+      console.log(JSON.stringify(docsample));
     }
     function hideMenu() {
-      navlinks.style.right = "-200px";
+      console.log("Hide");
+      state.menuvisible = false;
+      const docsample = document.documentElement.navlinks;
+      console.log(JSON.stringify(docsample));
     }
 
     return {
       Version,
       showMenu,
-      hideMenu
+      hideMenu,
+      state
     };
   }
 };
