@@ -19,13 +19,13 @@
           <div class="nav-links" id="navLinks" v-bind:style="{ right: state.right }">
             <i class="fa fa-times" v-on:click="hideMenu"></i>
             <ul>
-              <li><router-link :to="{name: 'home' }">Home</router-link></li>
+              <li><router-link :to="{name: 'home' }" v-on:click="hideMenu">Home</router-link></li>
               <li><a target="_blank" href="html-css/University/index.html">Test css menu</a></li>
               <li><a href="">Login</a></li>
               <li><a target="_blank" href="http://www.heden.fr/">Heden</a></li>
               <li><a target="_blank" href="https://www.foscam-france.fr/">Foscam</a></li>
-              <li><router-link :to="{name: 'contact' }">Contacts</router-link></li>
-              <li><router-link :to="{name: 'about' }">About Test</router-link></li>
+              <li><router-link :to="{name: 'contact' }" v-on:click="hideMenu">Contacts</router-link></li>
+              <li><router-link :to="{name: 'about' }" v-on:click="hideMenu">About Test</router-link></li>
             </ul>
           </div>
           <p></p>
@@ -39,20 +39,17 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.16: Jul 09 2021";
+    const Version = "topmenu 1.17: Jul 10 2021";
     let state = reactive ( {
-      menuvisible:  true,
-      right: '-200px'
+      right: '-200px',
     })
 
     function showMenu() {
       console.log("Show");
-      state.menuvisible = true;
       state.right = '0px';
     }
     function hideMenu() {
       console.log("Hide");
-      state.menuvisible = false;
       state.right = '-200px';
     }
 
