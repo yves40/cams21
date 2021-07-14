@@ -1,0 +1,3 @@
+POST http://localhost:8081/users/logout
+Content-Type: application/json
+Authorization:jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMmYzMWU0ZGZiNDczN2IwNDAyNTMxNiIsImVtYWlsIjoieUBmcmVlLmZyIiwiaWF0IjoxNjI2MjkyMzY2LCJleHAiOjE2MjYyOTI5NjZ9.d35FBAEzMcP1PicuphcT0CzGDlzD_BeuZtryLHqn7eE

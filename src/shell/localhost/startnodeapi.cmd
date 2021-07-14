@@ -12,7 +12,6 @@ rem
 @echo off
 cls
 cd %ROOTWEB%
-
 pm2 start server.js --watch
 pm2 list
 pm2 log 0 

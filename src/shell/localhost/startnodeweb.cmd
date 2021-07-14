@@ -12,5 +12,4 @@ rem
 @echo off
 cls
 cd %ROOTWEB%
-
 npm run dev

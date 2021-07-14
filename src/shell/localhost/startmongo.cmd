@@ -12,4 +12,6 @@ rem
 @echo off
 cls
 cd %ROOTMONGO%
-start mongod -f bin\mongod.cfg
+start mongod --verbose -f bin\mongod.cfg
+cd %ROOTWEB%
+type %ROOTMONGO%\log\mongod.log
