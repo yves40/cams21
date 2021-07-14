@@ -7,9 +7,11 @@
   </section>
   <section class="footer" >
     <pagebottom />
-  </section></template>
+  </section>
+</template>
 
 <script>
+
 import topmenu from "./views/topmenu";
 import pagebottom from "./views/pagebottom"
 
