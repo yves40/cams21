@@ -39,7 +39,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.17: Jul 10 2021";
+    const Version = "topmenu 1.18: Jul 14 2021";
     let state = reactive ( {
       right: '-200px',
     })
@@ -52,7 +52,7 @@ export default {
       console.log("Hide");
       state.right = '-200px';
     }
-
+    console.log(Version);
     return {
       Version,
       showMenu,
