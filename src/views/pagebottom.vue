@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-      <h4>RECO dev Corporation</h4>
+      <h4>RECO Dev Corporation</h4>
       <p>
         {{Version}}
       </p>
@@ -25,7 +25,7 @@
 <script>
 export default {
   setup() {
-    const Version = 'cams21 Jul 14 2021, 1.00';
+    const Version = 'cams21 Jul 14 2021, 1.01';
     return {
       Version
     }

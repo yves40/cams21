@@ -22,7 +22,7 @@
               <li><router-link :to="{name: 'home' }" v-on:click="hideMenu">Home</router-link></li>
               <li><a target="_blank" href="html-css/University/index.html">Test css menu</a></li>
               <li><a href="">Login</a></li>
-              <li><a target="_blank" href="http://www.heden.fr/">Heden</a></li>
+              <li><a target="_blank"  href="http://www.heden.fr/">Heden</a></li>
               <li><a target="_blank" href="https://www.foscam-france.fr/">Foscam</a></li>
               <li><router-link :to="{name: 'contact' }" v-on:click="hideMenu">Contacts</router-link></li>
               <li><router-link :to="{name: 'about' }" v-on:click="hideMenu">About Test</router-link></li>
