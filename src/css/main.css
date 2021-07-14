@@ -3,6 +3,14 @@
   padding: 0;
   font-family: 'Poppins', sans-serif;
 }
+/* 
+  Remove horizontal and vertical scroll bars 
+  This is to avoid a strange flickering effect when hiding/showing the menu
+  in small screen mode (media < 700px)
+*/
+body {
+  overflow-x: hidden;
+}
 
 .header {
   min-height: 20vh;
