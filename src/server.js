@@ -18,10 +18,9 @@
     Jan 30 2020   Logs services added 
     Feb 26 2020   Change cors client site identification
     Jun 20 2021   RECO. Deploy from new cams2021 project
-    Jul 17 2021   Reorg. cams-boostrap to cams2021
+    Jul 17 2021   Reorg. cams-boostrap to cams2021. Fix some messages
 ----------------------------------------------------------------------------*/
 const allroutes = require('./node-router/allroutes')
-
 const express = require('express');
 const passport = require('passport');
 
@@ -33,7 +32,7 @@ const corshelper = require('./modules/core/services/corshelper');
 const cors = require('cors');
 const mongologgerclass = require('./modules/core/classes/mongologgerclass');
 
-const Version = 'server.js:1.39, Jul 17 2021';
+const Version = 'server.js:1.41, Jul 17 2021';
 
 const app = express();
 //---------------------------------------------------------------------------------------------------------
@@ -99,12 +98,11 @@ logger.info('CORS Security setting: webserver node');
 logger.info("---------------------------------------------------------");
 logger.info('Site : ' + corshelper.getClientSite());
 app.use(cors(corshelper.getCORS()));
-// Log a start message in mongo
-const mongolog = new mongologgerclass(Version, 'NODESERVER');
-mongolog.informational('Started');
 // Let's start the server
 app.listen(properties.nodeserverport, ()=>{
   logger.info('Node.js now listening on port ' + properties.nodeserverport);
-  mongolog.informational('Node.js now listening on port ' + properties.nodeserverport);
+  // Log a start message in mongo
+  const mongolog = new mongologgerclass(Version, 'NODESERVER');
+  mongolog.informational('node server started, listening on port ' + properties.nodeserverport);
 });
 

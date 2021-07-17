@@ -16,6 +16,8 @@
 //    Feb 05 2020   Filter on logs with severity
 //    Feb 07 2020   Filter on logs with severity and message
 //    Feb 12 2020   Filter on logs with dates
+//    Jul 17 2021   Remove mongo connection from the constructor. 
+//                  Connects on 1st call to log()
 //----------------------------------------------------------------------------
 "use strict"
 const MongoLogModel = require('../model/mongoLogModel');
@@ -31,7 +33,7 @@ module.exports = class mongologger {
   constructor (modulename = 'Unspecified', 
               category = 'Unspecified', 
               email = 'Irelevant' ) {
-      this.Version = 'mongologgerclass:1.59, Feb 12 2020 ';
+      this.Version = 'mongologgerclass:1.60, Jul 17 2021 ';
       this.DEBUG = 0;
       this.INFORMATIONAL = 1;
       this.WARNING = 2;
@@ -40,10 +42,13 @@ module.exports = class mongologger {
       this.modulename = modulename;   // Used to track the calling component
       this.email = email;
       this.category = category;
-      this._DB = mongo.getMongoDBConnection();
-  };
+      this._DB = null;
+  }
   //----------------------------------------------------------------------------
   async log(message, severity = this.DEBUG) {
+    if(this._DB === null) {
+      this._DB = mongo.getMongoDBConnection();
+    }
     message = '[' + this.levelToString(severity) + '] ' + message;
     let themessage = new MongoLogModel( { module: this.modulename,
                                     category: this.category,
@@ -57,7 +62,7 @@ module.exports = class mongologger {
     .catch( value => {
       logger.error(themessage.message + ' : -----------------  Not Saved !!!!!!!!!!!!!');
     }); 
-  };
+  }
   //----------------------------------------------------------------------------
   // Log methods
   //----------------------------------------------------------------------------
@@ -65,27 +70,27 @@ module.exports = class mongologger {
     if(category !== undefined) this.category = category;      
     if(email !== undefined) this.email = email;      
     this.log(message, this.DEBUG);
-  };
+  }
   informational(message, category = undefined, email = undefined) {
       if(category !== undefined) this.category = category;      
       if(email !== undefined) this.email = email;      
       this.log(message, this.INFORMATIONAL);
-  };
+  }
   warning(message, category = undefined, email = undefined) {
     if(category !== undefined) this.category = category;      
     if(email !== undefined) this.email = email;      
     this.log(message, this.WARNING);
-  };
+  }
   fatal(message, category = undefined, email = undefined) {
     if(category !== undefined) this.category = category;      
     if(email !== undefined) this.email = email;      
     this.log(message, this.FATAL);
-  };
+  }
   error(message, category = undefined, email = undefined) {
     if(category !== undefined) this.category = category;      
     if(email !== undefined) this.email = email;      
   this.log(message, this.ERROR);
-  };
+  }
   //----------------------------------------------------------------------------
   levelToString(level) {
     switch (level) {
@@ -178,5 +183,5 @@ module.exports = class mongologger {
   //----------------------------------------------------------------------------
   getVersion() {
     return this.Version;
-  };
+  }
 };
