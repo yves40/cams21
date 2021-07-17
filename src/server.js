@@ -33,7 +33,7 @@ const corshelper = require('./modules/core/services/corshelper');
 const cors = require('cors');
 const mongologgerclass = require('./modules/core/classes/mongologgerclass');
 
-const Version = 'server.js:1.38, Jul 17 2021';
+const Version = 'server.js:1.39, Jul 17 2021';
 
 const app = express();
 //---------------------------------------------------------------------------------------------------------
@@ -74,11 +74,8 @@ app.use(responseheader);
 app.use(passport.initialize()); 
 app.use(passport.session());
 //---------------------------------------------------------------------------------------------------------
-// Load api routes from various providers
-//---------------------------------------------------------------------------------------------------------
-allroutes.loadRoutes(app);
-//---------------------------------------------------------------------------------------------------------
 // get my logger
+//---------------------------------------------------------------------------------------------------------
 const logparams = logger.getLoggerInfo();
 logger.info('***************************************************************');
 logger.info('********************** RESTART ********************************');
@@ -86,6 +83,13 @@ logger.info('***************************************************************');
 logger.info(Version);
 logger.info('Logger version    : ' + logparams.version);
 logger.info('Log level         : ' + logparams.loglevel);
+//---------------------------------------------------------------------------------------------------------
+// Load api routes from various providers
+//---------------------------------------------------------------------------------------------------------
+logger.info("---------------------------------------------------------");
+logger.info("load express routes");
+logger.info("---------------------------------------------------------");
+allroutes.loadRoutes(app);
 //----------------------------------------------------------------------------
 // Cross-Origin Resource Sharing
 // https://github.com/expressjs/cors/blob/master/README.md
