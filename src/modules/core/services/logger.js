@@ -17,6 +17,7 @@
 //                  export default is also a problem
 //    Oct 16 2019   Report log level on 1st call
 //    Oct 25 2019   Move logger level definitions into properties
+//    Jul 17 2021   Undefined contatnt DEBUGLEVEL
 //----------------------------------------------------------------------------
 const Version = 'logger:1.48, Oct 25 2019';
 
@@ -51,7 +52,7 @@ const MAXLOGS = 10;
 // LOCAL FUNCTIONS
 // Get a readable log level
 //----------------------------------------------------------------------------
-function levelToString(level = DEBUGLEVEL) {
+function levelToString(level = LOGGERLEVEL) {
     switch (level) {
         case DEBUG: return 'DBG';
         case INFORMATIONAL: return 'INF';
