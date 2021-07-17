@@ -9,6 +9,7 @@
     "camserver": "pm2 start src/server.js --watch"
   },
   "dependencies": {
+    "app-root-path": "^3.0.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.6.5",
