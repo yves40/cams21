@@ -42,10 +42,9 @@
 //    Mar 22 2020   Add IPs
 //    Mar 25 2020   Add symbolic names to nodeservercandidates
 //    Apr 04 2020   Change symbolic names for nodeservercandidates
+//    Jul 17 2021   Fix typo error 
 //----------------------------------------------------------------------------
-const Version = 'properties:1.58, Mar 25 2020 ';
-
-const axios = require('axios');
+const Version = 'properties:1.59, Jul 17 2021 ';
 
 // Core timer used to display the hour in the bottom bar
 const COREDELAY = 1000;
@@ -108,7 +107,7 @@ module.exports = {
     mongodbserver: mongodbserver,
     mongolist: mongolist,
     nodeserverport: nodeserverport,
-    nodeservercandidates, nodeservercandidates,
+    nodeservercandidates: nodeservercandidates,
     loggerlevel: loggerlevel,
     nodeserver: nodeserver,
     COREDELAY,
