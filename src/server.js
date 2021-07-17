@@ -18,10 +18,11 @@
     Jan 30 2020   Logs services added 
     Feb 26 2020   Change cors client site identification
     Jun 20 2021   RECO. Deploy from new cams2021 project
+    Jul 17 2021   Reorg. cams-boostrap to cams2021
 ----------------------------------------------------------------------------*/
-const mongoose = require('mongoose');
+const allroutes = require('./node-router/allroutes')
+
 const express = require('express');
-const path = require('path');
 const passport = require('passport');
 
 const logger =  require('./modules/core/services/logger');
@@ -32,7 +33,7 @@ const corshelper = require('./modules/core/services/corshelper');
 const cors = require('cors');
 const mongologgerclass = require('./modules/core/classes/mongologgerclass');
 
-const Version = 'server.js:1.35, Feb 26 2020';
+const Version = 'server.js:1.38, Jul 17 2021';
 
 const app = express();
 //---------------------------------------------------------------------------------------------------------
@@ -41,19 +42,23 @@ app.use(express.json());
 app.use(express.urlencoded( {extended: false}));
 //---------------------------------------------------------------------------------------------------------
 // Set a static folder containing html files
+//---------------------------------------------------------------------------------------------------------
 app.use(express.static('public'));
 //---------------------------------------------------------------------------------------------------------
 // Add a second path for the root css file (main.css)
 // The additional 1st parameter of app.use is the virtual path
 // This path is just used by public/ static files to get the css file
+//---------------------------------------------------------------------------------------------------------
 app.use('/style', express.static( __dirname + '/css'));
 app.use('/images', express.static( __dirname + '/assets'));
 //---------------------------------------------------------------------------------------------------------
 // Test a simple middleware function tracking requests made on the server : see the httplogger.js source file
 // The imported function is installed in the MW chain
+//---------------------------------------------------------------------------------------------------------
 if (properties.httptrace) app.use(httplogger);
 //---------------------------------------------------------------------------------------------------------
 // favicon request 
+//---------------------------------------------------------------------------------------------------------
 app.use(function(req, res, next) {  // For the favicon boring request error
   if (req.originalUrl && req.originalUrl.split("/").pop() === "favicon.ico") {
     return res.sendStatus(204);
@@ -62,6 +67,7 @@ app.use(function(req, res, next) {  // For the favicon boring request error
 });
 //---------------------------------------------------------------------------------------------------------
 // Install middleware responsible for response header settings
+//---------------------------------------------------------------------------------------------------------
 app.use(responseheader);
 //---------------------------------------------------------------------------------------------------------
 // passport middleware
@@ -70,10 +76,7 @@ app.use(passport.session());
 //---------------------------------------------------------------------------------------------------------
 // Load api routes from various providers
 //---------------------------------------------------------------------------------------------------------
-app.use(require('./modules/core/noderouter/api'));      // api testing middleware
-app.use(require('./modules/core/noderouter/mongoapi')); // mongodb services
-app.use(require('./modules/users/noderouter/userapi')); // users services
-app.use(require('./modules/core/noderouter/logsapi')); // Logs services
+allroutes.loadRoutes(app);
 //---------------------------------------------------------------------------------------------------------
 // get my logger
 const logparams = logger.getLoggerInfo();
