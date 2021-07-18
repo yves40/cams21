@@ -8,8 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const logger = require('../modules/core/services/logger');
-const Version = 'allroutes.js:1.04, Jul 17 2021 ';
-const dirpath = path.normalize(__dirname);
+const Version = 'allroutes.js:1.05, Jul 17 2021 ';
 
 /*
   Search for all noderouter directories from @
@@ -20,9 +19,13 @@ const dirpath = path.normalize(__dirname);
 function loadRoutes(app) {
 
   const rootpath = require('app-root-path');
-  let searchpath = path.normalize(rootpath.path + path.sep + 'src/modules');
-  fs.readdirSync(searchpath).forEach( function (file) {
-    let foundfile = searchpath + path.sep + file;
+  let searchpath = path.normalize(rootpath.path + path.sep + 'src');
+  scanDir(app, searchpath);
+}
+
+function scanDir(app, thepath) {
+  fs.readdirSync(thepath).forEach( function (file) {
+    let foundfile = thepath + path.sep + file;
     let stat = fs.lstatSync(foundfile);
     if (stat.isDirectory()) {
       let routerfolder = path.normalize(foundfile + '/noderouter');
@@ -34,9 +37,11 @@ function loadRoutes(app) {
           }
         });
       }
+      else {
+        scanDir(app, foundfile);
+      }
     }
-  });
-
+  });  
 }
 
 module.exports = {
