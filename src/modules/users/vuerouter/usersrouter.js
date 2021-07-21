@@ -11,9 +11,6 @@
 
 const Version = "usersrouter.js: Dec 20 2019, 1.04 ";
 
-import Vue from "vue";
-import Router from "vue-router";
-
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Register from "../views/Register";

@@ -1,7 +1,10 @@
+/*----------------------------------------------------------------------------
+    Jul 18 2021   Initial
+----------------------------------------------------------------------------*/
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import routes from "./router/allroutes"
+import routes from './vue-router/allroutes'
 import store from './store/allstore'
 
 //import './css/thecss.css'
