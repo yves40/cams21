@@ -84,3 +84,14 @@
     </header>
   </body>
 </html>
+
+<!-- Manage mouse click on menu icons -->
+<script>
+  const selectElement = (element) => document.querySelector(element);
+  let menu = selectElement('.menu-icons');
+  menu.addEventListener('click', () => { 
+    let thenav = selectElement('nav');
+    thenav.classList.toggle('active');
+  });
+</script>
+
