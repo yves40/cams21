@@ -18,11 +18,11 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
+ul {
+  list-style:none;
 }
 
-ul {
+a {
   text-decoration: none;
 }
 
@@ -203,6 +203,7 @@ li.move-right {
     opacity: 1;
     visibility: visible;
     max-height: initial;
+    transition: all 3s ease;
   }
 
   li.move-right {
