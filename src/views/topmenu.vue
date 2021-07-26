@@ -20,7 +20,8 @@
             <i class="fa fa-times" v-on:click="hideMenu"></i>
             <ul>
               <li><router-link :to="{name: 'home' }" v-on:click="hideMenu">Home</router-link></li>
-              <li><a target="_blank" href="html-css/University/index.html">Test css menu</a></li>
+              <li><a target="_blank" href="html-css/University/index.html">css menu #1</a></li>
+              <li><a target="_blank" href="html-css/cssmenu/index.html">css menu #2</a></li>
               <li><a href="">Login</a></li>
               <li><a target="_blank"  href="http://www.heden.fr/">Heden</a></li>
               <li><a target="_blank" href="https://www.foscam-france.fr/">Foscam</a></li>
@@ -39,7 +40,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.18: Jul 14 2021";
+    const Version = "topmenu 1.19: Jul 26 2021";
     let state = reactive ( {
       right: '-200px',
     })
