@@ -4,11 +4,11 @@
   Jul 01 2021       Initial
   Jul 27 2021       Real work starts
 -------------------------------------------------------------*/
-*
-{
+* {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 /* 
   Remove horizontal and vertical scroll bars 
@@ -17,21 +17,23 @@
 */
 body {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .header {
-  min-height: 20vh;
+  height: 10rem;
   width: 100%;
   background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(../images/cam1.jpg);
   background-position: center;
   background-size:cover;
   position: relative;
 }
+
 nav {
   display: flex;
   padding: 2% 6%;
   justify-content: space-between;
-  align-items: center;
+  align-items:center;
 }
 nav img {
   width: 150px;
@@ -39,6 +41,8 @@ nav img {
 .nav-links {
   flex: 1;
   text-align: right;
+  text-transform: uppercase;
+  height: 10rem;
 }
 .nav-links ul li {
   list-style: none;
@@ -95,18 +99,51 @@ nav .fa {
   display: none;
 }
 
+/*-------------------------------------------------------------------
+  Sub menus section
+-------------------------------------------------------------------*/
 
-.centeredtext {
-  width: 80%;
-  margin: auto;
-  text-align: center;
-  padding-top: 100px;
+.sub-menu li {
+  line-height: .5rem;
 }
 
-/*-----------------------------------
+.sub-menu {
+  width: 5rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-left: 2px solid #eb3007;
+  /* background-color:rgb(34, 29, 78); */
+  background-color: transparent;
+  z-index: 100;
+  transition: all 700ms ease;
+  opacity: 0;
+  width: 10rem;
+  visibility: hidden;
+}
+
+.nav-links li:hover > .sub-menu {
+  top: 2rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.sub-menu li:hover > .sub-menu {
+  top: 0;
+  left: 100%;
+}
+
+.sub-menu .sub-menu {
+  border-top: none;
+  border-left: 3px solid #eb3007;
+  top: 0;
+  left: 160%;
+}
+
+/*-------------------------------------------------------------------
         Small  screen 
         720 for low price phone
------------------------------------*/
+--------------------------------------------------------------------*/
 @media(max-width: 720px) {
   .menu-icons {
     display: flex;
@@ -171,8 +208,17 @@ nav .fa {
 .underlined {
   text-decoration: underline;
 }
+
 .Hcompressed {
   margin-top: 2px;
   margin-bottom: 2px;
   padding: 2px;
 }
+
+.centeredtext {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
+}
+
