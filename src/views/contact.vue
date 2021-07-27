@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-      <div class="facilities">
+      <div class="centeredtext">
         <h4>Contacts</h4>
         <p class="underlined">Send an email to</p>
         <p></p>
