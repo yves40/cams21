@@ -17,7 +17,7 @@
           <div class="nav-links" id="navLinks" v-bind:style="{ right: state.right }">
             <ul>
               <li><router-link :to="{name: 'home' }" v-on:click="hideMenu">Home</router-link></li>
-              <li><a href="">Sandbox <i class="fas fa-arrow-down"></i></a>
+              <li><a href="">Sandbox<i class="fas fa-arrow-down"></i></a>
               <ul class="sub-menu">
                 <li><a target="_blank" href="html-css/University/index.html">css menu #1</a></li>
                 <li><a target="_blank" href="html-css/cssmenu/index.html">css menu #2</a></li>
