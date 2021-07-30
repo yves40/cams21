@@ -14,14 +14,14 @@
             <i class="fa fa-times" v-on:click="hideMenu" v-bind:style="{ display: state.displayt }"></i>
             <i class="fa fa-bars" v-on:click="showMenu" v-bind:style="{ display: state.displayb }"></i>
           </div>
-          <div class="nav-links" id="navLinks" v-bind:style="{ right: state.right }">
+          <div class="nav-list" id="navLinks" v-bind:style="{ right: state.right }">
             <ul>
               <li><router-link :to="{name: 'home' }" v-on:click="hideMenu">Home</router-link></li>
               <li><a href="">Sandbox<i class="fas fa-arrow-down"></i></a>
-              <ul class="sub-menu">
-                <li><a target="_blank" href="html-css/University/index.html">css menu #1</a></li>
-                <li><a target="_blank" href="html-css/cssmenu/index.html">css menu #2</a></li>
-              </ul>
+                <ul class="sub-menu">
+                  <li><a target="_blank" href="html-css/University/index.html">css menu #1</a></li>
+                  <li><a target="_blank" href="html-css/cssmenu/index.html">css menu #2</a></li>
+                </ul>
               </li>
               <li><a href="">Users<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
@@ -38,7 +38,7 @@
                   <li><a href="">Three</a></li>
                 </ul>
               </li>
-              <li><a target="_blank"  href="http://www.heden.fr/">Heden</a></li>
+              <li><a target="_blank" href="http://www.heden.fr/">Heden</a></li>
               <li><a target="_blank" href="https://www.foscam-france.fr/">Foscam</a></li>
               <li><router-link :to="{name: 'contact' }" v-on:click="hideMenu">Contacts</router-link></li>
               <li><router-link :to="{name: 'about' }" v-on:click="hideMenu">About</router-link></li>

@@ -38,24 +38,24 @@ nav {
   justify-content: space-between;
   align-items:center;
 }
-.nav-links {
+.nav-list {
   flex: 1;
   text-align: right;
   text-transform: uppercase;
   height: 10rem;
 }
-.nav-links ul li {
+.nav-list ul li {
   list-style: none;
   display: inline-block;
   padding: 8px 12px;
   position: relative;
 }
 
-.nav-links a:hover {
+.nav-list a:hover {
   color: #eb3007;
   transition: all 700ms;
 }
-.nav-links ul li a {
+.nav-list ul li a {
   color: white;
   text-decoration: none;
   font-size: 16px;
@@ -98,7 +98,7 @@ nav {
   left: 80%;
 }
 
-.nav-links li:hover > .sub-menu {
+.nav-list li:hover > .sub-menu {
   top: 2rem;
   opacity: 1;
   visibility: visible;
@@ -121,39 +121,37 @@ nav {
         720 for low price phone
 --------------------------------------------------------------------*/
 @media(max-width: 720px) {
+  nav {
+    height: 3rem;
+    padding: 0;
+    align-items: center;
+  }
   .menu-icons {
     display: flex;
+    font-size: 30px;
   }
-
-  .text-box h1 {
-      font-size: 20px;
-  }
-  .nav-links ul li {
-      display: block;
-  }
-  .nav-links {
-      position: absolute;
+  .nav-list {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      top: 0;
+      text-align: left;
       background: #f44336;
       height: 100vh;
       width: 200px;
-      top: 0;
-      text-align: left;
       z-index: 100;
       transition: 1s;
+      overflow-y: scroll;
   }
-  nav .fa {
-      display: block;
-      color: white;
-      margin: 10px;
-      font-size: 22px;
-      cursor: pointer;
+
+  .sub-menu {
+    display: block;
+    margin-left: 1rem;
+    margin-top: .5rem;
+    max-height: 0;
+    z-index: 200;
   }
-  .nav-links ul {
-      padding: 30px;
-  }
-  .row {
-    flex-direction:column;
-  }
+
 } 
 
 /*-------------------------------------------------------------------
