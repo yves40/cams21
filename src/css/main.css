@@ -44,7 +44,7 @@ nav {
   text-transform: uppercase;
   height: 10rem;
 }
-.nav-list ul li {
+ul li {
   list-style: none;
   display: inline-block;
   padding: 8px 12px;
@@ -55,7 +55,7 @@ nav {
   color: #eb3007;
   transition: all 700ms;
 }
-.nav-list ul li a {
+ul li a {
   color: white;
   text-decoration: none;
   font-size: 16px;
@@ -131,25 +131,41 @@ nav {
     font-size: 30px;
   }
   .nav-list {
-      position: fixed;
-      display: flex;
-      flex-direction: column;
-      top: 0;
-      text-align: left;
-      background: #f44336;
-      height: 100vh;
-      width: 200px;
-      z-index: 100;
-      transition: 1s;
-      overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 200px;
+    flex: 1;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #191919;
+    z-index: 200;
+    align-items: initial;
+    overflow-y: scroll;
+  }
+
+  .nav-list > li {
+    line-height: 2rem;
   }
 
   .sub-menu {
-    display: block;
+    position: initial;
+    border: 3px solid transparent;
+    border-left-color: #eb3007;
     margin-left: 1rem;
-    margin-top: .5rem;
     max-height: 0;
-    z-index: 200;
+  }
+
+  .sub-menu::before {
+    display: none;
+  }
+
+  .nav-list li:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    max-height: initial;
+    transition: all 3s ease;
   }
 
 } 
