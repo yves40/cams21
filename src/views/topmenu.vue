@@ -14,8 +14,8 @@
             <i class="fa fa-times" v-on:click="hideMenu" v-bind:style="{ display: state.displayt }"></i>
             <i class="fa fa-bars" v-on:click="showMenu" v-bind:style="{ display: state.displayb }"></i>
           </div>
-          <div id="navLinks" v-bind:style="{ right: state.right }">
-            <ul class="nav-list" >
+          <div id="navLinks">
+            <ul class="nav-list"  v-bind:style="{ right: state.right }">
               <li><router-link :to="{name: 'home' }" v-on:click="hideMenu">Home</router-link></li>
               <li><a href="">Sandbox<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
