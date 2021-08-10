@@ -184,7 +184,7 @@ export default {
       this.privileges = this.$store.state.userstore.loggeduser.model.profilecode;
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.$parent.enableMenu('edit');
   },
   methods: {

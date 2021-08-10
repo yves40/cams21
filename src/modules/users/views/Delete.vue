@@ -59,7 +59,9 @@
 
 <script>
 
+// eslint-disable-next-line no-unused-vars
 const logger = require('../../core/services/logger');
+// eslint-disable-next-line no-unused-vars
 import { mapGetters, mapActions } from 'vuex'
 
 export default {

@@ -10,6 +10,7 @@
 //    Feb 12 2020   New methods 
 //    Aug 10 2021   Undeclared datetime ???? 
 //----------------------------------------------------------------------------
+// eslint-disable-next-line no-unused-vars
 const Version = 'datetime:1.13, Aug 10 2021';
 
 const months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];

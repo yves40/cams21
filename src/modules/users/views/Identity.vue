@@ -1,3 +1,4 @@
+/* eslint-disable vue/no-deprecated-filter */
 <!--
 
   Identity.vue
@@ -105,10 +106,8 @@
 // ------------------------------------------------------------------------------------------------------------
 // The script
 // ------------------------------------------------------------------------------------------------------------
-const logger = require('../../core/services/logger');
-const datetime = require('../../core/services/datetime');
-
-import { mapGetters, mapActions } from 'vuex'
+// eslint-disable-next-line no-unused-vars
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -118,6 +117,7 @@ export default {
   },
   // ------------------------------------------------------------------------------------------------------------
   computed: {
+    // eslint-disable-next-line no-undef
     ...mapGetters (
         'userstore', { 
           userstoreversion:  'getVersion',
@@ -148,7 +148,7 @@ export default {
   created() {
     this.$parent.disableMenu('identity');
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.$parent.enableMenu('identity');
   },
   // ------------------------------------------------------------------------------------------------------------

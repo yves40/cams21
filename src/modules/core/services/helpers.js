@@ -6,6 +6,7 @@
 //    Nov 20 2019   Async call function
 //    Jan 19 2020   Debounce function
 //----------------------------------------------------------------------------
+// eslint-disable-next-line no-unused-vars
 const Version = "helpers:1.03, jan 19 2020 ";
 
 

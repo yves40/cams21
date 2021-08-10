@@ -44,6 +44,7 @@
 //    Apr 04 2020   Change symbolic names for nodeservercandidates
 //    Jul 17 2021   Fix typo error 
 //----------------------------------------------------------------------------
+// eslint-disable-next-line no-unused-vars
 const Version = 'properties:1.59, Jul 17 2021 ';
 
 // Core timer used to display the hour in the bottom bar

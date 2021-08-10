@@ -3,13 +3,14 @@
 //
 //    Dec 20 2019   Initial
 //    Jan 25 2020   Implement some methodes
+//    Aug 10 2021   Some errors when recompiling after a year
 //----------------------------------------------------------------------------
 
 module.exports =  class profileclass {
 
   constructor () 
   {
-      this.Version = 'profileclass:1.08, Jan 25 2020 ';
+      this.Version = 'profileclass:1.09, Aug 10 2021 ';
       // The STD profile is always selected and disabled in the UI 
       this.profiles = [ 
         { code: 0, key: 'STD', label: 'Standard user', disabled: true, initialstate: true }, 
@@ -41,9 +42,6 @@ module.exports =  class profileclass {
             disabled: profile.disabled, 
         }));
     return labellist;
-  }
-  getProfileLabel(labelcode) {
-
   }
   //-----------------------------------------------------------------------------------
   // get a profile label

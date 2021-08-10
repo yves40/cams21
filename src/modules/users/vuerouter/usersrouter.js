@@ -9,6 +9,7 @@
 //    Jan 17 2020   List users
 //----------------------------------------------------------------------------
 
+// eslint-disable-next-line no-unused-vars
 const Version = "usersrouter.js: Dec 20 2019, 1.04 ";
 
 import Login from "../views/Login.vue";

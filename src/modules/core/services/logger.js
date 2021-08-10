@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 //----------------------------------------------------------------------------
 //    logger.js
 //
@@ -17,9 +18,10 @@
 //                  export default is also a problem
 //    Oct 16 2019   Report log level on 1st call
 //    Oct 25 2019   Move logger level definitions into properties
-//    Jul 17 2021   Undefined contatnt DEBUGLEVEL
+//    Jul 17 2021   Undefined constant DEBUGLEVEL
+//    Aug 10 2021   Undefined variables
 //----------------------------------------------------------------------------
-const Version = 'logger:1.48, Oct 25 2019';
+const Version = 'logger:1.49, Aug 10 2021';
 
 const datetime = require('./datetime'); 
 const properties = require('./properties'); 
@@ -68,7 +70,6 @@ function levelToString(level = LOGGERLEVEL) {
 //----------------------------------------------------------------------------
 function log(mess, level, syncmode = false) {
     if (level >= LOGGERLEVEL) {
-        let d = new Date();
         if (logs.length === MAXLOGS) {
             logs.shift();                   // Handle the log buffer
         }
@@ -112,7 +113,7 @@ function log(mess, level, syncmode = false) {
 // Returns an object with logger data
 //-----------------------------------------------------
 function getLoggerInfo() {
-    loggerinfo = {};
+    let loggerinfo = {};
     loggerinfo.version = Version;
     loggerinfo.loglevel = LOGGERLEVEL;
 
