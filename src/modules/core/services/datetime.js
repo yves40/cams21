@@ -8,8 +8,9 @@
 //    Feb 09 2020   date format for browser use jj/mm/aaaa
 //    Feb 10 2020   More work 
 //    Feb 12 2020   New methods 
+//    Aug 10 2021   Undeclared datetime ???? 
 //----------------------------------------------------------------------------
-const Version = 'datetime:1.12, Feb 12 2020';
+const Version = 'datetime:1.13, Aug 10 2021';
 
 const months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 
@@ -92,12 +93,12 @@ function convertDateTime(thedate) {
         let computedate = new Date(thedate);
         let day = computedate.getDate();
         let days = '';
+        let datetime = null;
         if (day < 10) days = day.toString().replace(/.*(^\d{1}).*/, "0$1");
             else days = day.toString();
-        datetime = months[computedate.getMonth()] + '-' + 
-            days + '-' 
-            + computedate.getFullYear() + ' ' 
-            + computedate.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1"); 
+                datetime = months[computedate.getMonth()] + '-' +  days + '-' 
+                + computedate.getFullYear() + ' ' 
+                + computedate.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1"); 
         return datetime;
     }
     else {

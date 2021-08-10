@@ -10,9 +10,10 @@
 #                 Change CAMSHOME to point on cams2021
 #	  Jun 22 2021  	Some new command line qualifiers
 #	  Jun 29 2021  	RECO start new cams2021 web app on zerasp
+#	  Aug 09 2021  	Start the node server with --watch on zerasp
 #--------------------------------------------------------------------------------
-VERSION="admin.sh v 1.19, "
-VERSIONDATE="Jun 29 2021 "
+VERSION="admin.sh v 1.20, "
+VERSIONDATE="Aug 09 2021 "
 LOG="/tmp/nodeadmin.log"
 CAMSHOME='/home/node/cams2021'
 #--------------------------------------------------------------------------------
@@ -81,7 +82,7 @@ Start()
             log "#2 the API server on $x"
             case $x in 
               'zerasp')    # avoid -watch on the raspberry to spare some cpu
-                      pm2 start $CAMSHOME/src/server.js --name camsserver
+                      pm2 start $CAMSHOME/src/server.js --name camsserver --watch
                       ;;
               'vboxnode')  
                       pm2 start $CAMSHOME/src/server.js --watch --ignore-watch='node_modules' --name camsserver
@@ -176,6 +177,8 @@ mongod' > processlist
   echo "NODEDEVMODE  : $NODEDEVMODE"
   echo "CAMUSER      : $CAMUSER"
   echo "COMPUTERNAME : $COMPUTERNAME"
+  echo
+  pm2 list
   echo
 }
 #---------------------------------------------------------------------------------------
