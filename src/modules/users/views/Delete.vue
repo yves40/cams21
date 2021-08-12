@@ -7,6 +7,7 @@
   Jan 16 2020   Better logic on user deletion service call
   Jan 29 2020   Generic delete for any user : User object parameter passed
   Apr 06 2020   Transmit host name when created to the Vuex store
+  Aug 10 2021   Shoot swal lib
 
 -->
 <template>
@@ -62,7 +63,7 @@
 // eslint-disable-next-line no-unused-vars
 const logger = require('../../core/services/logger');
 // eslint-disable-next-line no-unused-vars
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
@@ -87,57 +88,20 @@ export default {
   methods: {
     // Some funny things with swal
     deleteme() {
-      swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover the account!",
-        icon: "warning",
-        dangerMode: true,
-        buttons:{
-          forget: {
-            text: "Forget it",
-            value: "forget",
-            visible: true,
-          },
-          cancel: {
-            text: "Back",
-            value: "abort",
-            visible: true,
-          },
-          confirm: {
-            text: "Shoot !",
-            value: "shoot",
-            visible: true,
-          },
-        },
-      })
-      .then( (choice) => {
-        switch(choice) {
-          case "forget": 
-            this.$router.push({ name: 'home' });
-            break;
-          case "abort": 
-            if (this.selfedit)
-              this.$router.push({ name: 'identity' });
-            else
-              this.$router.push({ name: 'listusers' });
-            break;
-          case "shoot": 
-            if (this.selfedit) {    // --------------------------------  User delete itself ? 
-              // Action call (asynchronous)
-              this.$store.dispatch('userstore/logout', {router: this.$router, path: this.$route.path, mode: 'afterdelete'});
-              // Mutation SYNC call
-              this.$store.commit('userstore/delete');
-              this.$parent.setupMenus('logout');
-            }
-            else {                  // --------------------------------  User is deleted by an admin 
-              // Action ASYNC call
-              this.$store.dispatch('userstore/delete', { email: this.targetuser.email} );
-              this.$router.push({ name: 'listusers' });
-            }
-            break;
+        if (this.selfedit) {    // --------------------------------  User delete itself ? 
+          // Action call (asynchronous)
+          this.$store.dispatch('userstore/logout', {router: this.$router, path: this.$route.path, mode: 'afterdelete'});
+          // Mutation SYNC call
+          this.$store.commit('userstore/delete');
+          this.$parent.setupMenus('logout');
         }
-      })
-    },
+        else {                  // --------------------------------  User is deleted by an admin 
+          // Action ASYNC call
+          this.$store.dispatch('userstore/delete', { email: this.targetuser.email} );
+          this.$router.push({ name: 'listusers' });
+        }
+    }
+    ,
     gotohome() {
       this.$router.push({ name: 'home' });
     },

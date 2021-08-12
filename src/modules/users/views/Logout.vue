@@ -13,10 +13,11 @@
   Dec 17 2019   Edit user profile page de-activated
   Jan 02 2020   New top menu management @ logout
   Jan 16 2020   Trace the logout mode
+  Aug 10 2021   Shoot swal lib
  
 -->
 <template>
-
+  <div></div>
 </template>
 
 <script>
@@ -47,15 +48,17 @@ export default {
       }
       logger.debug(this.Version + 'logout mode is :' +  logoutmode);
       this.logoutVuex({router: this.$router, path: this.$route.path, mode: logoutmode})
+        // eslint-disable-next-line no-unused-vars
         .then((result) => {
           if (logoutmode === 'standard')
-            swal('You are disconnected!', result, 'success');
+            logger.info(this.Version + 'Logged out');
           else
-            swal('You are deleted and disconnected!', result, 'success');
+            logger.info(this.Version + 'Deleted and disconnected')
           this.$parent.setupMenus('logout');
         })
         .catch((err) => {
-          swal('KO!', err, 'error');
+          logger.error(this.Version + 'an error occured during user logout');
+          logger.error(err);
         });
     },
   },

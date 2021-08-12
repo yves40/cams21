@@ -1,4 +1,3 @@
-/* eslint-disable vue/no-deprecated-filter */
 <!--
 
   Identity.vue
@@ -16,6 +15,8 @@
   Dec 20 2019   User profiles display
   Jan 07 2020   Fix small syntax error in vue log list ( b-row )
   Jan 28 2020   Display user privs in a compressed form
+  Aug 10 2021   Filters are deprecated. Will look at the problem later
+  Aug 12 2021   Filters are deprecated....
 -->
 <template>
   <div>
@@ -82,19 +83,19 @@
         <b-row>
           <b-col cols="1"></b-col>
           <b-col v-if="entry.severity < '2'" class="loginf">
-            {{entry.timestamp | formatdate}} - {{entry.message}}
+            {{datetime.ConvertDateTime(entry.timestamp)}} - {{entry.message}}
           </b-col>
           <b-col v-else-if="entry.severity === '2'" class="logwarn">
-            {{entry.timestamp | formatdate}} - {{entry.message}}
+            {{datetime.ConvertDateTime(entry.timestamp)}} - {{entry.message}}
           </b-col>
           <b-col v-else-if="entry.severity === '3'" class="logerr">
-            {{entry.timestamp | formatdate}} - {{entry.message}}
+            {{datetime.ConvertDateTime(entry.timestamp)}} - {{entry.message}}
           </b-col>
           <b-col v-else-if="entry.severity === '4'" class="logfatal">
-            {{entry.timestamp | formatdate}} - {{entry.message}}
+            {{datetime.ConvertDateTime(entry.timestamp)}} - {{entry.message}}
           </b-col>
           <b-col v-else class="logfatal">
-            {{entry.timestamp | formatdate}} - {{entry.message}}
+            {{datetime.ConvertDateTime(entry.timestamp)}} - {{entry.message}}
           </b-col>
         </b-row>
       </div>
@@ -103,16 +104,19 @@
 </template>
 
 <script>
+
 // ------------------------------------------------------------------------------------------------------------
 // The script
 // ------------------------------------------------------------------------------------------------------------
 // eslint-disable-next-line no-unused-vars
 import { mapGetters } from 'vuex'
+// eslint-disable-next-line no-unused-vars
+import datetime from '../../core/services/datetime';
 
 export default {
   data() {
       return {
-        version: "Identity 1.57, Jan 28 2020 ",
+        version: "Identity 1.60, Aug 12 2021 ",
       };
   },
   // ------------------------------------------------------------------------------------------------------------

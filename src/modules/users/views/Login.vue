@@ -23,6 +23,7 @@
   Jan 02 2020   Menu management
   Jan 17 2020   Buttons size and playing with toggleable breakpoints
   Apr 06 2020   Transmit host name when created to the Vuex store
+  Aug 10 2021   Shoot swal lib
 -->
 <template>
   <div>
@@ -101,7 +102,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
       return {
-        version: "Login 1.87, Apr 06 2020 ",
+        version: "Login 1.88, Aug 10 2021 ",
         email: 'yves@free.fr',
         password: 'manager',
       };
@@ -109,6 +110,7 @@ export default {
   // ------------------------------------------------------------------------------------------------------------
   computed: {
       emailstate() {
+        // eslint-disable-next-line no-useless-escape
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(this.email.toLowerCase());
       },
@@ -136,7 +138,7 @@ export default {
       this.$store.dispatch('userstore/setNodeServer', { loc: window.location.hostname });
       this.$parent.setupMenus('login');
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.$parent.enableMenu('login');
   },
   // ------------------------------------------------------------------------------------------------------------
@@ -149,12 +151,13 @@ export default {
     login() {
       logger.debug(this.version + 'login requested');
       this.loginVuex({email: this.email, password: this.password, router: this.$router})
+        // eslint-disable-next-line no-unused-vars
         .then((result) => {
-          swal('OK!', result, 'success');
           this.$parent.setupMenus('logged');
         })
         .catch((err) => {
-          swal('KO!', err, 'error');
+          logger.error(this.version + 'an error occured during logging');
+          logger.error(err);
         });
     },
     clear() {

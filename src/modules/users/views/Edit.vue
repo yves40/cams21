@@ -8,6 +8,7 @@
   Jan 27 2020   Work on user modification by an admin; Now get the modified user
   Jan 28 2020   Fix some binding
   Jan 29 2020   Add a parameter for update call to the user store
+  Aug 10 2021   Shoot swal lib
 -->
 <template>
   <div>
@@ -201,15 +202,16 @@ export default {
           privs: this.privileges,
           updatemode: this.selfedit,
         })
+        // eslint-disable-next-line no-unused-vars
         .then((result) => {
-          swal('User ' + this.targetuser.email + ' updated', result, 'success');
           if ( this.selfedit)
             this.$router.push({ name: 'identity' });
           else
             this.$router.push({ name: 'listusers' });
         })
         .catch((err) => {
-          swal('KO!', err, 'error');
+          logger.error(this.version + 'Error during user update');
+          logger.error(err);
         });
     },
     clear() {

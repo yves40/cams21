@@ -12,6 +12,7 @@
   Jan 27 2020   Add a user edit button
   Jan 29 2020   Add a user delete button
   Apr 06 2020   Transmit host name when created to the Vuex store
+  Aug 12 2021   Filters are deprecated....
 -->
 <template>
   <div>
@@ -82,11 +83,11 @@
                   <li>ID          : {{entry._id}}</li>
                   <li>Pseudo      : {{entry.name}}</li>
                   <li>Description : {{entry.description}} </li>
-                  <li>Last login  : {{entry.lastlogin | formatdate}}</li>
-                  <li>Last logout : {{entry.lastlogout | formatdate}} </li>
-                  <li>Created     : {{entry.created | formatdate}}</li>
-                  <li>Updated     : {{entry.updated | formatdate}}</li>
-                  <li>Privileges  : {{entry.profilecode}}</li>
+                  <li>Last login  : {{datetime.ConvertDateTime(entry.lastlogin)}}</li>
+                  <li>Last logout : {{datetime.ConvertDateTime(entry.lastlogout)}} </li>
+                  <li>Created     : {{datetime.ConvertDateTime(entry.created)}}</li>
+                  <li>Updated     : {{datetime.ConvertDateTime(entry.updated)}}</li>
+                  <li>Privileges  : {{datetime.ConvertDateTime(entry.profilecode)}}</li>
               </b-card>
              </b-collapse>
           </b-row>
@@ -99,20 +100,18 @@
 </template>
 
 <script>
+
 // ------------------------------------------------------------------------------------------------------------
 // The script
 // ------------------------------------------------------------------------------------------------------------
-const logger = require('../../core/services/logger');
-const datetime = require('../../core/services/datetime');
-const helpers = require('../../core/services/helpers');
-const props = require('../../core/services/properties');
-
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
+// eslint-disable-next-line no-unused-vars
+import datetime from '../../core/services/datetime';
 
 export default {
   data() {
       return {
-        version: "List 1.70, Apr 06 2020 ",
+        version: "List 1.72, Aug 12 2021 ",
         timeoutsid: null,
       }
   },
@@ -171,7 +170,7 @@ export default {
     this.$store.dispatch('userliststore/loadUsersList', this.emailfilter);
     this.$parent.disableMenu('listusers');
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.$parent.enableMenu('listusers');
   },
 }
