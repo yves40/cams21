@@ -3,6 +3,7 @@
 
   Jul 01 2021       Initial
   Jul 27 2021       Real work starts
+  Aug 15 2021       Click menu when narrow screen
 -------------------------------------------------------------*/
 * {
   margin: 0;
@@ -96,14 +97,14 @@ ul li a {
   left: 80%;
 }
 
-.nav-list li:hover > .sub-menu {
+.nav-list li:hover > ul.sub-menu {
   top: 2rem;
   opacity: 1;
   visibility: visible;
   left: 0;
 }
 
-.sub-menu li:hover > .sub-menu {
+.sub-menu li:hover > ul.sub-menu {
   top: 0;
   left: 100%;
 }
