@@ -90,7 +90,10 @@ ul li a {
   position: absolute;
   border-left: 1px solid #eb3007;
   z-index: 100;
-  transition: all 700ms ease;
+
+  transition-duration: 500ms;
+  transition-timing-function: ease-in;
+
   opacity: 0;
   width:max-content;
   visibility: hidden;
@@ -98,10 +101,11 @@ ul li a {
 }
 
 .nav-list li:hover > ul.sub-menu {
-  top: 2rem;
+    top: 2rem;
   opacity: 1;
   visibility: visible;
   left: 0;
+  transition-duration: 500ms;
 }
 
 .sub-menu li:hover > ul.sub-menu {
@@ -162,7 +166,6 @@ ul li a {
     opacity: 1;
     visibility: visible;
     max-height: initial;
-    transition-timing-function: ease;
     transition:  2s;
   }
 
