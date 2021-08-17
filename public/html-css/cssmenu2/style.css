@@ -7,6 +7,7 @@
     margin:0;
     outline:0;
     text-align:left;
+    left: 30%;
 }
 
 /* style for the button */
@@ -19,10 +20,15 @@
     background: #96305e;
 }
 
-.menu:focus { pointer-events:none; }
 
 /* If :focus detected the dropdown menu is displayed by making it visible */
-.menu:focus .menu-dropdown { opacity:1; visibility:visible; }
+
+.menu:hover .menu-dropdown { 
+    opacity:1; 
+    visibility:visible; 
+    transition: 1s;
+    transform: rotate(360deg);
+}
 
 /* style for the dropdown box */
 .menu-dropdown {
@@ -34,7 +40,8 @@
     border:1px black solid;
     border-radius:3px;
     pointer-events: auto;
-    position: absolute;
+    position:absolute;
+    left: 100%;
     z-index: 1;
     opacity: 0;
     visibility: hidden;
@@ -51,4 +58,22 @@
     text-decoration:none;
     width:160px;
     padding:5px;
+}
+
+ul li {
+    list-style: none;
+}
+
+.submenu {
+    display: flex;
+    flex-direction: column;
+    top: O;
+    left: 100%;
+    visibility: hidden;
+    max-height: 0;
+}
+
+.menu-dropdown li:hover > .submenu {
+    max-height: initial;
+    visibility: visible;
 }
