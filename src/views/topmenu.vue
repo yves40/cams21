@@ -17,20 +17,20 @@
           <div id="navLinks">
             <ul class="nav-list"  v-bind:style="{ right: state.right }">
               <li><router-link :to="{name: 'home' }" v-on:click="hideMenu">Home</router-link></li>
-              <li><a href="">Sandbox<i class="fas fa-arrow-down"></i></a>
+              <li><a href="#">Sandbox<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
                   <li><a target="_blank" href="html-css/University/index.html">css menu #1</a></li>
                   <li><a target="_blank" href="html-css/cssmenu/index.html">css menu #2</a></li>
                 </ul>
               </li>
-              <li><a href="">Users<i class="fas fa-arrow-down"></i></a>
+              <li><a href="#">Users<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
-                  <li><a href="">One</a>
+                  <li><a href="#">One</a>
                     <ul class="sub-menu">
-                      <li><a href="">Four</a></li>
-                      <li><a href="">Five</a></li>
-                      <li><a href="">Six</a></li>
-                      <li><a href="">Seven</a></li>
+                      <li><a href="">Four is a stork</a></li>
+                      <li><a href="">Five is a knive</a></li>
+                      <li><a href="">Six is a pig</a></li>
+                      <li><a href="">Seven is a hen</a></li>
                       <li><a href="">Eight</a></li>
                     </ul>
                   </li>
