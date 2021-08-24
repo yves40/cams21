@@ -25,7 +25,7 @@
 <script>
 export default {
   setup() {
-    const Version = 'cams21: Aug 23 2021, 1.11';
+    const Version = 'cams21: Aug 24 2021, 1.12';
     return {
       Version
     }
