@@ -27,8 +27,7 @@
                 <ul class="sub-menu">
                   <li><a href="#">One</a>
                     <ul class="sub-menu">
-                      <li><a href="">Four is a stork</a></li>
-                      <li><a href="">Five is a knive</a></li>
+                      <li><router-link :to="{name: 'notyet' }" v-on:click="hideMenu">Four is a stork</router-link></li>
                       <li><a href="">Six is a pig</a></li>
                       <li><a href="">Seven is a hen</a></li>
                       <li><a href="">Eight</a></li>

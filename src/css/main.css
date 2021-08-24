@@ -129,9 +129,8 @@ ul li a {
 
 /*-------------------------------------------------------------------
         Small  screen 
-        720 for low price phone
 --------------------------------------------------------------------*/
-@media(max-width: 720px) {
+@media(max-width: 800px) {
   nav {
     height: 4rem;
     padding: 0;
