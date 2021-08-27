@@ -1,3 +1,10 @@
+<!-- 
+    App.vue
+
+    Aug 27 2021   Reorg views location
+//----------------------------------------------------------------------------
+-->
+
 <template>
   <section class="header">
     <topmenu />
@@ -12,8 +19,8 @@
 
 <script>
 
-import topmenu from "./views/topmenu";
-import pagebottom from "./views/pagebottom"
+import topmenu from "./modules/core/views/topmenu";
+import pagebottom from "./modules/core/views/pagebottom"
 
 
 export default {

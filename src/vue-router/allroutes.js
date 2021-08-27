@@ -5,23 +5,18 @@
 //    Jul 18 2021   Module relative path modified
 //    Aug 23 2021   Noyet
 //    Aug 24 2021   Noyet, fix the wrong usage of addRoute
+//    Aug 27 2021   Reorg views location
 //----------------------------------------------------------------------------
 // eslint-disable-next-line no-unused-vars
-const Version = "allroutes.js: Aug 24 2021, 1.05 ";
+const Version = "allroutes.js: Aug 27 2021, 1.06 ";
 
 
 import { createRouter, createWebHistory } from 'vue-router';
-import home from '../views/home.vue'
-import about from '../views/about.vue'
-import contact from '../views/contact'
 
 import usersroutes from '../modules/users/vuerouter/usersrouter';
 import coreroutes from '../modules/core/vuerouter/coreroutes'
 
 let routes = [
-  { path: '/', name: 'home',component: home },
-  { path: '/about', name: 'about',component: about },
-  { path: '/contact', name: 'contact',component: contact },
 ]
 
 let moreroutes = routes.concat(usersroutes);
