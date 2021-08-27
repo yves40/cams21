@@ -4,6 +4,7 @@
   Jul 01 2021       Initial
   Jul 27 2021       Real work starts
   Aug 15 2021       Click menu when narrow screen
+  Aug 27 2021       Adjust sub menu line height
 -------------------------------------------------------------*/
 * {
   margin: 0;
@@ -89,7 +90,7 @@ ul li a {
 -------------------------------------------------------------------*/
 
 .sub-menu li {
-  line-height: .5rem;
+  line-height: 1rem;
 }
 
 .sub-menu {
