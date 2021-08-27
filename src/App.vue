@@ -30,7 +30,7 @@ export default {
     pagebottom
   },
   setup() {
-    const Version = "cams2021 1.06, May 18 2021";
+    const Version = "cams2021 1.07, Aug 27 2021";
     const Topmessage = "cams21 helper";
 
     return { Version, Topmessage };
