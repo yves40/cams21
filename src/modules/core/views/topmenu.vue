@@ -1,3 +1,10 @@
+<!-- 
+
+  Jan 01 2021   Initial
+  Aug 28 2021   Work on router-link entry parameters
+
+-->
+
 <template>
   <html>
     <head>
@@ -16,7 +23,7 @@
           </div>
           <div id="navLinks">
             <ul class="nav-list"  v-bind:style="{ right: state.right }">
-              <li><router-link :to="{name: 'home' }" v-on:click="hideMenu">Home</router-link></li>
+              <li><router-link :to="{name: 'home'}" v-on:click="hideMenu">Home</router-link></li>
               <li><a href="#">Sandbox<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
                   <li><a target="_blank" href="html-css/University/index.html">css menu #1</a></li>
@@ -27,14 +34,25 @@
                 <ul class="sub-menu">
                   <li><a href="#">One</a>
                     <ul class="sub-menu">
-                      <li><router-link :to="{name: 'notyet' }" v-on:click="hideMenu">Four is a stork</router-link></li>
-                      <li><a href="">Six is a pig</a></li>
-                      <li><a href="">Seven is a hen</a></li>
-                      <li><a href="">Eight</a></li>
+                      <li><router-link :to="{name: 'notyet', params: {from: 'Four', message: 'Four is a stork is not a working feature right now'} }"
+                         v-on:click="hideMenu">Four is a stork</router-link></li>
+                      <li><a href="#">Six is a pig</a></li>
+                      <li><a href="#">Seven is a hen</a></li>
+                      <li><a href="#">Eight</a></li>
                     </ul>
                   </li>
-                  <li><a href="">Two</a></li>
-                  <li><a href="">Three</a></li>
+                  <li><router-link :to="{ name: 'notyet', params: {
+                                                            from: 'Two', 
+                                                            message: 'Two will be available in September',
+                                                            ok: 'OK',
+                                                            okroute: 'home',
+                                                            cancel: 'Cancel',
+                                                            cancelroute: 'about',
+                                                            back: 'Back',
+                                                            backroute: 'contact' 
+                                                          }}"
+                       v-on:click="hideMenu">Two</router-link></li>
+                  <li><a href="#">Three</a></li>
                 </ul>
               </li>
               <li><a target="_blank" href="http://www.heden.fr/">Heden</a></li>
@@ -53,7 +71,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.22: Jul 27 2021";
+    const Version = "topmenu 1.23: Jul 27 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
