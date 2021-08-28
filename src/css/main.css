@@ -6,6 +6,8 @@
   Aug 15 2021       Click menu when narrow screen
   Aug 27 2021       Adjust sub menu line height
 -------------------------------------------------------------*/
+@import "./buttons.css";
+
 * {
   margin: 0;
   padding: 0;

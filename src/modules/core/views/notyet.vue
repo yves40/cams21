@@ -5,6 +5,7 @@
   Jan 02 2020   Initial
   Aug 27 2021   cams2021
   Aug 28 2021   Add optional buttons
+  
 -->
 <template>
   <div class="centeredtext">
@@ -15,9 +16,9 @@
       <p>We're working hard to bring it online asap</p>
       <p class="underlined">Coming from menu entry:[{{props.from}}] : {{props.message}}</p>
       <p></p>
-      <button v-show="okbutton" @click="click('OK')">{{props.ok}}</button>
-      <button v-show="cancelbutton"  @click="click('CANCEL')">{{props.cancel}}</button>
-      <button v-show="backbutton"  @click="click('BACK')">{{props.back}}</button>
+      <button class="button" v-show="okbutton" @click="click('OK')">{{props.ok}}</button>
+      <button class="button red" v-show="cancelbutton"  @click="click('CANCEL')">{{props.cancel}}</button>
+      <button class="button blue" v-show="backbutton"  @click="click('BACK')">{{props.back}}</button>
   </div>
 </template>
 
@@ -41,7 +42,7 @@ export default {
   },
   setup(props) {
 
-    const version = "Notyet 1.27, Aug 28 2021 ";
+    const version = "Notyet 1.29, Aug 28 2021 ";
     const router = useRouter();
     let okbutton = false;
     let cancelbutton = false;
@@ -61,8 +62,6 @@ export default {
       else backr = props.backroute;
 
     function click(action) {
-      console.log('****' + action);
-      console.log('****' + okr + '/' + cancelr + '/' + backr);
       switch(action) {
         case 'OK': router.push(okr);
               break;

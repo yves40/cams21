@@ -7,7 +7,7 @@
 //----------------------------------------------------------------------------
 
 /* eslint-disable no-unused-vars */
-const Version = "coreroutes.js: Aug 28 2021, 1.04 ";
+const Version = "coreroutes.js: Aug 28 2021, 1.05 ";
 
 import notyet from "../views/notyet";
 import home from '../views/home.vue'
@@ -23,7 +23,7 @@ const  coreroutes =
     { path: '/home', name: 'home',component: home },
     { path: '/about', name: 'about',component: about },
     { path: '/contact', name: 'contact',component: contact },  
-    { path: "/:catchAll(.*)",component: notfound},
+    { path: "/:catchAll(.*)",name: 'catch', component: notfound},
   ];
 
 export default coreroutes;

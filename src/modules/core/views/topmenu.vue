@@ -44,7 +44,7 @@
                   <li><router-link :to="{ name: 'notyet', params: {
                                                             from: 'Two', 
                                                             message: 'Two will be available in September',
-                                                            ok: 'OK',
+                                                            ok: 'Home',
                                                             okroute: 'home',
                                                             cancel: 'Cancel',
                                                             cancelroute: 'about',
@@ -79,13 +79,11 @@ export default {
     })
 
     function showMenu() {
-      console.log("Show");
       state.right = '0px';
       state.displayt = "flex"
       state.displayb = "none"
     }
     function hideMenu() {
-      console.log("Hide");
       state.right = '-200px';
       state.displayt = "none"
       state.displayb = "flex"
