@@ -8,7 +8,7 @@
     </head>
     <body>
       <div class="centeredtext">
-        <h4>Contacts</h4>
+        <h4>{{version}}</h4>
         <p class="underlined">Send an email to</p>
         <p></p>
         <div>
@@ -17,7 +17,51 @@
           <p class="Hcompressed">isa.redbull@free.fr/Project Manager</p>
           <p class="Hcompressed">ben.bnp@free.fr/Senior developer</p>
         </div>
+        <button class="button" @click="click('OK')">{{props.ok}}</button>
       </div>
     </body>
   </html>
 </template>
+
+<script>
+
+/* eslint-disable no-unused-vars */
+/* eslint-disable vue/no-setup-props-destructure */
+
+import { useRouter } from 'vue-router'
+
+export default {
+  props: {
+    message: String,
+    ok: String,
+    okroute: String,
+  },
+  setup(props) {
+    
+    const version = "contact 1.06, Aug 29 2021 ";
+    const router = useRouter();
+
+    let okbutton = false;
+    let okr = null;
+    
+    console.log(props.ok)
+    if(typeof props.ok != 'undefined') { okbutton = true; }
+    if(typeof props.okroute === 'undefined') okr = 'home'; 
+      else okr = props.okroute;
+
+
+    function click(action) {
+      switch(action) {
+        case 'OK': router.push(okr);
+              break;
+      }
+    }
+    return {
+      version,
+      okbutton,
+      props,
+      click
+    };
+  }
+}
+</script>

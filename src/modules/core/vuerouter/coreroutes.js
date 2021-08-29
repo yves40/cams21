@@ -22,7 +22,7 @@ const  coreroutes =
     { path: '/', name: 'rootpath',component: home },
     { path: '/home', name: 'home',component: home },
     { path: '/about', name: 'about',component: about },
-    { path: '/contact', name: 'contact',component: contact },  
+    { path: '/contact', name: 'contact',component: contact, props: true },  
     { path: "/:catchAll(.*)",name: 'catch', component: notfound},
   ];
 

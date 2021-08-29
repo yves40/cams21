@@ -2,6 +2,7 @@
 
   Jan 01 2021   Initial
   Aug 28 2021   Work on router-link entry parameters
+  Aug 29 2021   Test other routes options ( about, contacts)
 
 -->
 
@@ -57,7 +58,11 @@
               </li>
               <li><a target="_blank" href="http://www.heden.fr/">Heden</a></li>
               <li><a target="_blank" href="https://www.foscam-france.fr/">Foscam</a></li>
-              <li><router-link :to="{name: 'contact' }" v-on:click="hideMenu">Contacts</router-link></li>
+              <li><router-link :to="{name: 'contact', params: {
+                      ok:'Home',
+                      okroute: 'home',
+                    }}" 
+              v-on:click="hideMenu">Contacts</router-link></li>
               <li><router-link :to="{name: 'about' }" v-on:click="hideMenu">About</router-link></li>
             </ul>
           </div>
@@ -71,7 +76,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.23: Jul 27 2021";
+    const Version = "topmenu 1.24: Aug 29 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
