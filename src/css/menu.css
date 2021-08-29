@@ -1,0 +1,140 @@
+/*------------------------------------------------------------
+  menu.css
+
+  Aug 28 2021       Initial
+-------------------------------------------------------------*/
+/*-------------------------------------------------------------------
+  main Navigation section
+-------------------------------------------------------------------*/
+
+nav {
+  display: flex;
+  padding: 2% 6%;
+  justify-content: space-between;
+  align-items:center;
+}
+.nav-list {
+  flex: 1;
+  text-align: right;
+  text-transform: uppercase;
+  height: 10rem;
+}
+ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.nav-list li:hover > .sub-menu {
+  color: #eb3007;
+  transition: all 700ms;
+  opacity: 1;
+  visibility: visible;
+}
+
+.sub-menu li:hover > .sub-menu {
+    top: 0;
+    left: 100%;
+}
+
+ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/*-------------------------------------------------------------------
+  Sub menus section
+-------------------------------------------------------------------*/
+
+.sub-menu li {
+  line-height: 1rem;
+}
+
+.sub-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-left: 1px solid #eb3007;
+  z-index: 100;
+
+  transition-duration: 500ms;
+  transition-timing-function: ease-in;
+
+  opacity: 0;
+  width:max-content;
+  visibility: hidden;
+  left: 80%;
+}
+
+.nav-list li:hover > sub-menu {
+  top: 2rem;
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+  transition-duration: 500ms;
+}
+
+.sub-menu li:hover > ul.sub-menu {
+  top: 0;
+  left: 100%;
+}
+
+.sub-menu .sub-menu {
+  /* border-left: 1px solid #eb3007;*/
+  top: 0;
+  left: 160%;
+}
+/*-------------------------------------------------------------------
+        Small  screen 
+--------------------------------------------------------------------*/
+@media(max-width: 800px) {
+  nav {
+    height: 4rem;
+    padding: 0;
+    vertical-align: center;
+  }
+  .menu-icons {
+    display: flex;
+    font-size: 40px;
+  }
+  .nav-list {
+    position: fixed;
+    top: 4rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #151d5f;
+    opacity: 90%;
+    z-index: 200;
+    align-items: initial;
+    transition: all 1s ease;
+    overflow-y: scroll;
+  }
+
+  .nav-list > li {
+    margin: 1rem 0 1rem 0;
+  }
+
+  .sub-menu {
+    position: initial;
+    max-height: 0;
+    border-right: 1px solid #eb3007;
+    border-left: 0;
+  }
+
+  .nav-list li:hover > .sub-menu {
+    text-decoration: underline;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    margin-right: 2rem;
+    opacity: 1;
+    visibility: visible;
+    max-height: initial;
+    transition:  all 2s ease;
+  }
+
+} 
+
+
