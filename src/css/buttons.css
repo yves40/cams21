@@ -3,16 +3,17 @@
   buttons.css
 
   Aug 28 2021       Initial
+  Aug 29 2021       Work on look
 -------------------------------------------------------------*/
 .button {
   border: 1px solid black;
+  border-radius: 5px;  
   min-width: 80px;
   padding: 6px;
   margin-top: 0.8rem;
-  margin-left: .2rem;
-  margin-right: .2rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
   background-color: transparent;
-  border-radius: 3px;  
   cursor: pointer;
   text-align: center;
   font-weight: 600;

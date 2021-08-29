@@ -43,28 +43,20 @@ body {
   font-weight: 600;
 }
 
-.menu-icons {
-  color: #eee;
-  position: absolute;
-  top: 10%;
-  left: 2rem;
-  cursor: pointer;
-  z-index: 100;
-  display: none;
-}
-
-.icons .fa {
-  color: #f44336;
-  margin: 0 5px;
-  cursor: pointer;
-  padding: 5px 0;
-}
-
 /*-------------------------------------------------------------------
    General purpose 
 -------------------------------------------------------------------*/
 .underlined {
   text-decoration: underline;
+}
+
+.border {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 1rem 0 1rem 0;
+  width: 60%;
+  text-align: center;
+  align-items: center;
 }
 
 .Hcompressed {
@@ -77,25 +69,7 @@ body {
   width: 80%;
   margin: auto;
   text-align: center;
-  padding-top: 100px;
-}
-
-.text-box {
-  width: 90%;
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-.text-box h1 {
-  font-size: 62px;
-}
-.text-box p {
-  margin: 10px 0 40px;
-  font-size: 14px;
-  color: white;
+  padding-top: 4rem;
 }
 
 
