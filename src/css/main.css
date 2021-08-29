@@ -26,6 +26,9 @@ body {
   overflow-y: hidden;
 }
 
+/*-------------------------------------------------------------------
+   3 Screen sections
+-------------------------------------------------------------------*/
 .header {
   width: 100%;
   background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(../images/cam1.jpg);
@@ -33,6 +36,19 @@ body {
   background-size:cover;
   position: relative;
 }
+
+.appzone {
+  align-items: right;
+  justify-content: center;
+}
+
+.centeredtext {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+
 .footer {
   width: 100%;
   text-align: center;
@@ -53,23 +69,12 @@ body {
 .border {
   border: 1px solid black;
   border-radius: 5px;
-  margin: 1rem 0 1rem 0;
-  width: 60%;
-  text-align: center;
-  align-items: center;
 }
 
 .Hcompressed {
   margin-top: 2px;
   margin-bottom: 2px;
   padding: 2px;
-}
-
-.centeredtext {
-  width: 80%;
-  margin: auto;
-  text-align: center;
-  padding-top: 4rem;
 }
 
 

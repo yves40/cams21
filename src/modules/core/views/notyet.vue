@@ -12,12 +12,11 @@
   <div class="centeredtext">
       <h4>{{version}}</h4>
       <img src="../../../images/WIP.png" height="150" width="150"/>
-      <p> This feature is not yet implemented.</p>
-      <p>We're working hard to bring it online asap</p>
-
-        <p class="underlined border">{{props.message}}</p>
-
-
+      <div class="border">
+        <p> This feature is not yet implemented.</p>
+        <p>We're working hard to bring it online asap</p>
+        <p>{{props.message}}</p>
+      </div>
       <button class="button" v-show="okbutton" @click="click('OK')">{{props.ok}}</button>
       <button class="button red" v-show="cancelbutton"  @click="click('CANCEL')">{{props.cancel}}</button>
       <button class="button blue" v-show="backbutton"  @click="click('BACK')">{{props.back}}</button>
