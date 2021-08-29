@@ -7,8 +7,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body>
-      <h4>RECO Dev Corporation</h4>
-      <p>
+      <h4>{{Company}}</h4>
+      <p class="italic smallitalic">
         {{Version}}
       </p>
       <!-- 
@@ -25,9 +25,11 @@
 <script>
 export default {
   setup() {
-    const Version = 'cams21: Aug 28 2021, 1.13';
+    const Version = 'cams21: Aug 29 2021, 1.14';
+    const Company = "RECO Dev Corporation Limited";
     return {
-      Version
+      Version,
+      Company
     }
   }
 }

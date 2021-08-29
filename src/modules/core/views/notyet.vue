@@ -43,7 +43,7 @@ export default {
   },
   setup(props) {
 
-    const version = "Notyet 1.30, Aug 29 2021 ";
+    const version = "Notyet 1.31, Aug 29 2021 ";
     const router = useRouter();
     let okbutton = false;
     let cancelbutton = false;
