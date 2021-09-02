@@ -25,7 +25,7 @@
 <script>
 export default {
   setup() {
-    const Version = 'cams21: Aug 29 2021, 1.14';
+    const Version = 'cams21: Sep 02 2021, 1.15';
     const Company = "RECO Dev Corporation Limited";
     return {
       Version,

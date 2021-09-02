@@ -3,6 +3,7 @@
   Jan 01 2021   Initial
   Aug 28 2021   Work on router-link entry parameters
   Aug 29 2021   Test other routes options ( about, contacts)
+  Sep 02 2021   About page has params 
 
 -->
 
@@ -47,9 +48,9 @@
                                                             message: 'Two will be available in September',
                                                             ok: 'Home',
                                                             okroute: 'home',
-                                                            cancel: 'Cancel',
+                                                            cancel: 'About',
                                                             cancelroute: 'about',
-                                                            back: 'Back',
+                                                            back: 'Contacts',
                                                             backroute: 'contact' 
                                                           }}"
                        v-on:click="hideMenu">Two</router-link></li>
@@ -63,7 +64,10 @@
                       okroute: 'home',
                     }}" 
               v-on:click="hideMenu">Contacts</router-link></li>
-              <li><router-link :to="{name: 'about' }" v-on:click="hideMenu">About</router-link></li>
+              <li><router-link :to="{name: 'about' , params: {
+                      ok:'Home',
+                      okroute: 'home',
+                    }}" v-on:click="hideMenu">About</router-link></li>
             </ul>
           </div>
           <p></p>
@@ -76,7 +80,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.24: Aug 29 2021";
+    const Version = "topmenu 1.26: Sep 02 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',

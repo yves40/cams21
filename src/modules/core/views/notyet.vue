@@ -6,6 +6,7 @@
   Aug 27 2021   cams2021
   Aug 28 2021   Add optional buttons
   Aug 29 2021   Small adjustments
+  Sep 02 2021   Problem when clicking back to contacts (no text in button)
   
 -->
 <template>
@@ -43,7 +44,7 @@ export default {
   },
   setup(props) {
 
-    const version = "Notyet 1.31, Aug 29 2021 ";
+    const version = "Notyet 1.34, Sep 02 2021 ";
     const router = useRouter();
     let okbutton = false;
     let cancelbutton = false;
@@ -66,9 +67,9 @@ export default {
       switch(action) {
         case 'OK': router.push(okr);
               break;
-        case 'CANCEL': router.push(cancelr);
+        case 'CANCEL': router.push({name: cancelr, params: { ok: 'Home', okr: 'home'}});
               break;
-        case 'BACK': router.push(backr);
+        case 'BACK': router.push({name: backr, params: { ok: 'Home', okr: 'home'}});
               break;
       }
     }

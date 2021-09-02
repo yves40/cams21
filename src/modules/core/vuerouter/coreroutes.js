@@ -4,6 +4,7 @@
 //    Aug 23 2021   Initial
 //    Aug 27 2021   Reorg views location
 //    Aug 28 2021   Properties on notyet, notfound route
+//    Sep 02 2021   about has params now
 //----------------------------------------------------------------------------
 
 /* eslint-disable no-unused-vars */
@@ -21,7 +22,7 @@ const  coreroutes =
     { path: "/notyet", name: "notyet", component: notyet, props: true },
     { path: '/', name: 'rootpath',component: home },
     { path: '/home', name: 'home',component: home },
-    { path: '/about', name: 'about',component: about },
+    { path: '/about', name: 'about',component: about, props: true },
     { path: '/contact', name: 'contact',component: contact, props: true },  
     { path: "/:catchAll(.*)",name: 'catch', component: notfound},
   ];

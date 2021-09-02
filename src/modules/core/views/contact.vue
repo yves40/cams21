@@ -1,3 +1,11 @@
+<!--
+
+  contact.vue
+
+  Jan 02 2020   Initial
+  Sep 02 2021   cams2021
+  
+-->
 <template>
   <!DOCTYPE html>
   <html lang="en">
@@ -38,18 +46,18 @@ export default {
   },
   setup(props) {
     
-    const version = "contact 1.06, Aug 29 2021 ";
+    const version = "contact 1.07, Sep 02 2021 ";
     const router = useRouter();
 
     let okbutton = false;
     let okr = null;
     
-    console.log(props.ok)
     if(typeof props.ok != 'undefined') { okbutton = true; }
     if(typeof props.okroute === 'undefined') okr = 'home'; 
       else okr = props.okroute;
 
 
+      console.log(JSON.stringify(props))
     function click(action) {
       switch(action) {
         case 'OK': router.push(okr);
