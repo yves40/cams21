@@ -3,7 +3,7 @@
   <div class="look">
     <h2>{{title}}</h2>
     <p>{{msg}}</p>
-    <button class="button" @click="$emit('close')">Close</button>
+    <button class="button" @click="$emit('action')">{{label}}</button>
   </div>
 </template>
 
@@ -13,7 +13,8 @@ export default {
   name: 'modal-content',
   props: {
     title: String,
-    msg: String
+    msg: String,
+    label: String
   },
 
   setup(props) {

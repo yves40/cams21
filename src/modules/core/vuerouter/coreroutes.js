@@ -19,6 +19,7 @@ import contact from '../views/contact'
 import notfound from '../views/notfound'
 import aboutyves from '../views/aboutyves'
 import notif from '../components/NotificationHandler'
+import spopup from '../components/Simplepopup'
 
 
 const  coreroutes = 
@@ -29,6 +30,7 @@ const  coreroutes =
     { path: '/about', name: 'about',component: about, props: true },
     { path: '/aboutyves', name: 'aboutyves',component: aboutyves, props: true },
     { path: '/notif', name: 'notif',component:notif, props: true },
+    { path: '/spopup', name: 'spopup',component:spopup, props: true },
     { path: '/contact', name: 'contact',component: contact, props: true },  
     { path: "/:catchAll(.*)",name: 'catch', component: notfound},
   ];

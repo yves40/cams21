@@ -1,7 +1,6 @@
 <!-- 
 
-  Noti
-  label="Close me"ficationHandler.vue
+  SimplePopup.vue
 
   Sep 03 2021   Initial
 
@@ -9,17 +8,15 @@
 
 <template>
   <div class="root">
-    
-    <button v-show="!isOpen" @click="isOpen = true">Open</button>
-
     <teleport to='body'>
-      <div class="modal" v-if="isOpen">
+      <div class="modal">
         <div>
           <modal-content 
-            @close="isOpen = false"
-            title="Does NotificationHandler work ?"
+            @action="mouseAction"
+            title="Does Simplepopup work ?"
             msg="I hope so"
-            label="Close me"/>
+            label="Home sweet home"
+          />  
         </div>
       </div>
     </teleport>
@@ -30,18 +27,21 @@
 /* eslint-disable no-unused-vars */
 import { ref } from 'vue';
 import ModalContent from './ModalContent';
-
+import { useRouter } from 'vue-router'
 export default {
   components: {
     ModalContent
   },
   setup() {
 
-const Version = "NotificationHandler 1.00: Sep 03 2021 ";
+    const Version = "SimplePopup 1.03: Sep 03 2021 ";
+    const router = useRouter();
 
-    const isOpen = ref(false);
+    function mouseAction() {
+      router.push({name: 'home'});
+    }
     return { 
-      isOpen
+      mouseAction
     }
   }
 }
