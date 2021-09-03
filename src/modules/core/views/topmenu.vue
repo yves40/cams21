@@ -4,6 +4,7 @@
   Aug 28 2021   Work on router-link entry parameters
   Aug 29 2021   Test other routes options ( about, contacts)
   Sep 02 2021   About page has params 
+  Sep 03 2021   New teleport sample
 
 -->
 
@@ -30,7 +31,8 @@
                 <ul class="sub-menu">
                   <li><a target="_blank" href="html-css/University/index.html">css menu #1</a></li>
                   <li><a target="_blank" href="html-css/cssmenu/index.html">css menu #2</a></li>
-                </ul>
+                  <li><router-link :to="{name: 'aboutyves' }" v-on:click="hideMenu">About Yves</router-link></li>            
+                  <li><router-link :to="{name: 'notif' }" v-on:click="hideMenu">Notification</router-link></li>                      </ul>
               </li>
               <li><a href="#">Users<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
@@ -67,7 +69,7 @@
               <li><router-link :to="{name: 'about' , params: {
                       ok:'Home',
                       okroute: 'home',
-                    }}" v-on:click="hideMenu">About</router-link></li>
+                    }}" v-on:click="hideMenu">About</router-link></li>      
             </ul>
           </div>
           <p></p>
