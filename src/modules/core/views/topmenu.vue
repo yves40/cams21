@@ -29,11 +29,15 @@
               <li><router-link :to="{name: 'home'}" v-on:click="hideMenu">Home</router-link></li>
               <li><a href="#">Sandbox<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
-                  <li><a target="_blank" href="html-css/University/index.html">css menu #1</a></li>
-                  <li><a target="_blank" href="html-css/cssmenu/index.html">css menu #2</a></li>
-                  <li><router-link :to="{name: 'aboutyves' }" v-on:click="hideMenu">About Yves</router-link></li>            
-                  <li><router-link :to="{name: 'notif' }" v-on:click="hideMenu">Notification</router-link></li>              
-                  <li><router-link :to="{name: 'spopup' }" v-on:click="hideMenu">Popup</router-link></li>                      </ul>
+                  <li><a target="_blank" href="html-css/University/index.html">University</a></li>
+                  <li><a href="#">Popup Tests<i class="fas fa-arrow-down"></i></a>
+                    <ul class="sub-menu">
+                      <li><router-link :to="{name: 'aboutyves' }" v-on:click="hideMenu">About Yves</router-link></li>            
+                      <li><router-link :to="{name: 'notif' }" v-on:click="hideMenu">Notification</router-link></li>              
+                      <li><router-link :to="{name: 'spopup' }" v-on:click="hideMenu">Popup</router-link></li>                      
+                    </ul>
+                  </li>
+                </ul>
               </li>
               <li><a href="#">Users<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
@@ -83,7 +87,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.26: Sep 02 2021";
+    const Version = "topmenu 1.27: Sep 04 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
