@@ -31,6 +31,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 h2 {
   margin: .5rem;

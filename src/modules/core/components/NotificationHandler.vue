@@ -16,7 +16,7 @@
       <div class="modal" v-if="isOpen">
         <div>
           <modal-content 
-            @close="isOpen = false"
+            @action="isOpen = false"
             title="Does NotificationHandler work ?"
             msg="I hope so"
             label="Close me"/>
@@ -37,7 +37,7 @@ export default {
   },
   setup() {
 
-const Version = "NotificationHandler 1.00: Sep 03 2021 ";
+const Version = "NotificationHandler 1.01: Sep 04 2021 ";
 
     const isOpen = ref(false);
     return { 

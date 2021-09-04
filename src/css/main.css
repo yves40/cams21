@@ -42,13 +42,6 @@ body {
   justify-content: center;
 }
 
-.centeredtext {
-  width: 80%;
-  margin: auto;
-  text-align: center;
-  padding-top: 2rem;
-}
-
 .footer {
   width: 100%;
   text-align: center;
@@ -62,6 +55,13 @@ body {
 /*-------------------------------------------------------------------
    General purpose 
 -------------------------------------------------------------------*/
+.centeredtext {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+
 .underlined {
   text-decoration: underline;
 }
