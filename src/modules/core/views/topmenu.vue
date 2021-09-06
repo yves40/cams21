@@ -100,7 +100,7 @@ export default {
       state.displayb = "none"
     }
     function hideMenu() {
-      state.right = '-200px';
+      state.right = '-300px';
       state.displayt = "none"
       state.displayb = "flex"
     }
