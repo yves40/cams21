@@ -30,7 +30,7 @@
               <li><a href="#">Sandbox<i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
                   <li><a target="_blank" href="html-css/University/index.html">University</a></li>
-                  <li><a href="#">Popup Tests<i class="fas fa-arrow-down"></i></a>
+                  <li><a href="#">Popup Tests <i class="fas fa-arrow-right"></i></a>
                     <ul class="sub-menu">
                       <li><router-link :to="{name: 'aboutyves' }" v-on:click="hideMenu">About Yves</router-link></li>            
                       <li><router-link :to="{name: 'notif' }" v-on:click="hideMenu">Notification</router-link></li>              
@@ -39,9 +39,9 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="#">Users<i class="fas fa-arrow-down"></i></a>
+              <li><a href="#">Users <i class="fas fa-arrow-down"></i></a>
                 <ul class="sub-menu">
-                  <li><a href="#">One</a>
+                  <li><a href="#">One <i class="fas fa-arrow-right"></i></a>
                     <ul class="sub-menu">
                       <li><router-link :to="{name: 'notyet', params: {from: 'Four', message: 'Four is a stork is not a working feature right now'} }"
                          v-on:click="hideMenu">Four is a stork</router-link></li>

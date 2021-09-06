@@ -32,7 +32,7 @@ nav {
 }
 .nav-list {
   flex: 1;
-  text-align: right;
+  text-align: left;
   text-transform: uppercase;
   height: 10rem;
 }
@@ -43,8 +43,11 @@ ul li {
   position: relative;
 }
 
+li i {
+  margin-left: .4rem;
+}
+
 .nav-list li:hover > .sub-menu {
-  color: #eb3007;
   transition: all 700ms;
   opacity: 1;
   visibility: visible;
@@ -58,7 +61,7 @@ ul li {
 ul li a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /*-------------------------------------------------------------------
@@ -99,10 +102,10 @@ ul li a {
 }
 
 .sub-menu .sub-menu {
-  /* border-left: 1px solid #eb3007;*/
   top: 0;
   left: 160%;
 }
+
 /*-------------------------------------------------------------------
         Small  screen 
 --------------------------------------------------------------------*/
