@@ -145,7 +145,7 @@ ul li a {
 
   .nav-list li:hover > .sub-menu {
     text-decoration: underline;
-    margin: 0 0 20px 0;
+    margin: 10px 0 20px 0;
     opacity: 1;
     visibility: visible;
     max-height: initial;
