@@ -2,8 +2,8 @@
   menu.css
 
   Aug 28 2021       Initial
+  Sep 07 2021       Fix menu alignment when small screen is used
 --------------------------------------------------------------------*/
-
 /*-------------------------------------------------------------------
   main Navigation section
 -------------------------------------------------------------------*/
@@ -31,7 +31,6 @@ nav {
   align-items:center;
 }
 .nav-list {
-  flex: 1;
   text-align: left;
   text-transform: uppercase;
   height: 10rem;
@@ -39,7 +38,10 @@ nav {
 ul li {
   list-style: none;
   display: inline-block;
-  padding: 8px 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
   position: relative;
 }
 
@@ -67,7 +69,6 @@ ul li a {
 /*-------------------------------------------------------------------
   Sub menus section
 -------------------------------------------------------------------*/
-
 .sub-menu li {
   line-height: 1rem;
 }
@@ -85,7 +86,6 @@ ul li a {
   opacity: 0;
   width:max-content;
   visibility: hidden;
-  left: 80%;
 }
 
 .nav-list li:hover > sub-menu {
@@ -121,15 +121,14 @@ ul li a {
   }
   .nav-list {
     position: fixed;
-    top: 4rem;
+    top:4rem;
     height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: #151d5f;
     opacity: 90%;
     z-index: 200;
-    align-items: initial;
-    transition: all 1s ease;
+    transition: all 700ms ease;
     overflow-y: none;
   }
 

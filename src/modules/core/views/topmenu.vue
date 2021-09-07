@@ -5,6 +5,7 @@
   Aug 29 2021   Test other routes options ( about, contacts)
   Sep 02 2021   About page has params 
   Sep 03 2021   New teleport sample : Test popup messages
+  Sep 07 2021   Sub menu spacing for small screen
 
 -->
 
@@ -19,19 +20,23 @@
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     </head>
     <body>
+        <!-- ------------------------------------------------------------------- -->
         <nav>
           <div class="menu-icons">
             <i class="fa fa-times" v-on:click="hideMenu" v-bind:style="{ display: state.displayt }"></i>
             <i class="fa fa-bars" v-on:click="showMenu" v-bind:style="{ display: state.displayb }"></i>
           </div>
+          <!-- ------------------------------------------------------------------- -->
           <div id="navLinks">
             <ul class="nav-list"  v-bind:style="{ right: state.right }">
               <li><router-link :to="{name: 'home'}" v-on:click="hideMenu">Home</router-link></li>
               <li><a href="#">Sandbox<i class="fas fa-arrow-down"></i></a>
-                <ul class="sub-menu">
+              <!-- ------------------------------------------------------------------- -->
+              <ul class="sub-menu">
                   <li><a target="_blank" href="html-css/University/index.html">University</a></li>
                   <li><a href="#">Popup Tests <i class="fas fa-arrow-right"></i></a>
-                    <ul class="sub-menu">
+                  <!-- ------------------------------------------------------------------- -->
+                  <ul class="sub-menu">
                       <li><router-link :to="{name: 'aboutyves' }" v-on:click="hideMenu">About Yves</router-link></li>            
                       <li><router-link :to="{name: 'notif' }" v-on:click="hideMenu">Notification</router-link></li>              
                       <li><router-link :to="{name: 'spopup' }" v-on:click="hideMenu">Popup</router-link></li>                      
@@ -40,8 +45,10 @@
                 </ul>
               </li>
               <li><a href="#">Users <i class="fas fa-arrow-down"></i></a>
+                <!-- ------------------------------------------------------------------- -->
                 <ul class="sub-menu">
                   <li><a href="#">One <i class="fas fa-arrow-right"></i></a>
+                    <!-- ------------------------------------------------------------------- -->
                     <ul class="sub-menu">
                       <li><router-link :to="{name: 'notyet', params: {from: 'Four', message: 'Four is a stork is not a working feature right now'} }"
                          v-on:click="hideMenu">Four is a stork</router-link></li>
@@ -87,7 +94,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.27: Sep 04 2021";
+    const Version = "topmenu 1.28: Sep 07 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
