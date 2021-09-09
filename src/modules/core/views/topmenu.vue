@@ -6,6 +6,7 @@
   Sep 02 2021   About page has params 
   Sep 03 2021   New teleport sample : Test popup messages
   Sep 07 2021   Sub menu spacing for small screen
+  Sep 09 2021   1 st test with parametered menu entries
 
 -->
 
@@ -29,7 +30,7 @@
           <!-- ------------------------------------------------------------------- -->
           <div id="navLinks">
             <ul class="nav-list"  v-bind:style="{ right: state.right }">
-              <li><router-link :to="{name: 'home'}" v-on:click="hideMenu">Home</router-link></li>
+              <li><AppLink :to="{name: 'home'}" v-on:click="hideMenu">Home</AppLink></li>
               <li><a href="#">Sandbox<i class="fas fa-arrow-down"></i></a>
               <!-- ------------------------------------------------------------------- -->
               <ul class="sub-menu">
@@ -71,8 +72,8 @@
                   <li><a href="#">Three</a></li>
                 </ul>
               </li>
-              <li><a target="_blank" href="http://www.heden.fr/">Heden</a></li>
-              <li><a target="_blank" href="https://www.foscam-france.fr/">Foscam</a></li>
+              <li><AppLink to="http://www.heden.fr/" >Heden</AppLink></li>
+              <li><AppLink to="https://www.foscam-france.fr/" >Foscam</AppLink></li>
               <li><router-link :to="{name: 'contact', params: {
                       ok:'Home',
                       okroute: 'home',
@@ -82,6 +83,28 @@
                       ok:'Home',
                       okroute: 'home',
                     }}" v-on:click="hideMenu">About</router-link></li>      
+              <!-------------------------------------------------------------------------------------------
+                Parametered menu 
+              --------------------------------------------------------------------------------------------> 
+              <span v-for="entry in topmenu" :key="entry.id">
+                <li v-show="entry.enableflag"><AppLink :to="{name: entry.url}" v-on:click="hideMenu">
+                                              {{entry.text}}
+                                              <span v-if="entry.submenu"><i class="fas fa-arrow-down"></i></span>
+                                              </AppLink>
+                    <ul v-if="entry.submenu" class="sub-menu">
+                      <span v-for="subentry in entry.submenuentries" :key="subentry.id">
+                        <li v-if="subentry.isvue" v-show="subentry.enableflag">
+                              <AppLink :to="{name: subentry.url}" v-on:click="hideMenu">
+                                                {{subentry.text}}
+                              </AppLink>
+                        </li>
+                        <li v-if="!subentry.isvue" v-show="subentry.enableflag">
+                            <a target="_blank" href={{subentry.url}}>{{subentry.text}}</a>
+                        </li>
+                      </span>
+                    </ul>
+                </li>
+              </span>
             </ul>
           </div>
           <p></p>
@@ -91,15 +114,63 @@
 </template>
 
 <script>
+
+/* eslint-disable no-unused-vars */
+
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.28: Sep 07 2021";
+    const Version = "topmenu 1.31: Sep 08 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
       displayb: 'flex'
-    })
+    });
+    const topmenu =  [
+        {
+          text: "Home",
+          enableflag: true,
+          submenu: false,
+          url: "home",
+        },
+        {
+          text: "Sandbox",
+          enableflag: true,
+          submenu: true,
+          submenuentries: [
+            { isvue: false,  url: "html-css/University/index.html", params: {}, text: "University", enableflag: true, disableflag: false, },
+          ]
+        },
+        {
+          text: "Users",
+          enableflag: true,
+          submenu: true,
+          submenuentries: [
+            { isvue: true, url: "login", params: {}, text: "Login", enableflag: true, disableflag: false, },
+            { isvue: true, url: "logout",params: {},text: "Logout", enableflag: false, disableflag: false,},
+            { isvue: true, url: "register", params: { mode: 'STD'},text: "Register", enableflag: true, disableflag: false, },
+            { isvue: true, url: "identity",params: {},text: "Identity", enableflag: false, disableflag: false, },
+            { isvue: true, url: "edit",params: { mode: 'STD'},text: "My profile", enableflag: false, disableflag: false, },
+            { isvue: true, url: "deleteme",params: {},text: "Delete ME!", enableflag: false, disableflag: false, },
+          ]
+        },
+        {
+          text: "Contacts",
+          submenu: false,
+          enableflag: true,
+          isvue: true, 
+          url: "contact",
+        },
+        {
+          text: "About",
+          submenu: false,
+          enableflag: true,
+          isvue: true, 
+          url: "about",
+        },
+      ];
+
+    // Functions
 
     function showMenu() {
       state.right = '0px';
@@ -116,7 +187,8 @@ export default {
       Version,
       showMenu,
       hideMenu,
-      state
+      state,
+      topmenu
     };
   }
 };
