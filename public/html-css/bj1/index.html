@@ -2,68 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello BJ1</title>
+  <title>BNP slideshow</title>
 </head>
   <body>
       <div class="container">
-          <img id="i1" src="./images/about.jpg" />
-          <img id="i2" src="./images/background.jpg" />
-      </div>
-      <div class="action">
-          <!-- Next and previous buttons -->
-          <a class="prev" href="#i1" >&#10094;</a>
-          <a class="next" href="#i2">&#10095;</a>    
+        <img src="./images/meeting.jpg" alt="Slide 4" />
+        <img src="./images/students.jpg" alt="Slide 3" />
+        <img src="./images/library.png" alt="Slide 2" />
+        <img src="./images/cafeteria.png" alt="Slide 1" />
       </div>
   </body>
 </html>
 
 <style>
 
-.container
-{
-    display: flex;
-    width: 100vw;
-    height: auto;
-    border: blue 5px solid;
-    overflow: hidden;
-}
+.container {width:100%; height:0px; padding-bottom: 50%; overflow:hidden; position:relative; border: blue 4px solid;}
+.container img{ position:absolute; animation:container 20s infinite; opacity:0; width: 100%; height: auto;}
 
-img {
-  width: 100%;
-  height: auto;
-  border: red 1px solid;
-}
 
-.action {
-  display: flex;
-  flex-direction: row;
-  font-size: 32px;
-  position: relative;
-  border: green 3px solid;
-}
+@keyframes container {25%{opacity:1;} 40%{opacity:0;}}
+.container img:nth-child(4){animation-delay:0s;}
+.container img:nth-child(3){animation-delay:5s;}
+.container img:nth-child(2){animation-delay:10s;}
+.container img:nth-child(1){animation-delay:15s;}
 
-.slider {
-  border: green solid 5px;
-  width: 100vh;
-  height: auto;
-  align-items: center;
-}
 
-#i1:target {
-  left: 0;
-}
-
-#i2:target {
-  left: -100%;
-}
-
-.cntr-enter-from { opacity: 0 }
-.cntr-enter-to { opacity: 1 }
-.cntr-enter-active, .cntr-leave-active { transition: all 2s ease };
-
-/* Next & previous buttons */
+/* Next & previous buttons
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -79,30 +44,18 @@ img {
   user-select: none;
 }
 
-/* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
-
 a {
   text-decoration: none;
 }
 
-#i1 {
-  position: relative;
-  left: 0;
-}
-#i2 {
-  position: relative;
-  left: 0;
-}
-
-
+*/
        
 </style>
