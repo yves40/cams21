@@ -7,6 +7,11 @@ body {
   height: 100vh;
   display: flex;
   background: black;
+  /* Following two directives are 
+  used to avoid a flickering effect on scoll bars 
+  when slides are moving */
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .release {
@@ -93,4 +98,12 @@ input[name="r"]{
 }
 #img5:checked ~ .s1 {
   margin-left: -80%;
+}
+
+@media( max-width: 700px )
+{
+  .slider {
+    width: 100%;
+    border: 2px red solid;
+  }
 }
