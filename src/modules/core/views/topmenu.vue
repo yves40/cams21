@@ -6,7 +6,9 @@
   Sep 02 2021   About page has params 
   Sep 03 2021   New teleport sample : Test popup messages
   Sep 07 2021   Sub menu spacing for small screen
-  Sep 09 2021   1 st test with parametered menu entries
+  Sep 08 2021   1 st test with parametered menu entries
+  Sep 09 2021   Follow up.
+  Sep 28 2019   Debug the external link detection logic
 
 -->
 
@@ -30,81 +32,31 @@
           <!-- ------------------------------------------------------------------- -->
           <div id="navLinks">
             <ul class="nav-list"  v-bind:style="{ right: state.right }">
-              <li><AppLink :to="{name: 'home'}" v-on:click="hideMenu">Home</AppLink></li>
-              <li><a href="#">Sandbox<i class="fas fa-arrow-down"></i></a>
-              <!-- ------------------------------------------------------------------- -->
-              <ul class="sub-menu">
-                  <li><a target="_blank" href="html-css/University/index.html">University</a></li>
-                  <li><a href="#">Popup Tests <i class="fas fa-arrow-right"></i></a>
-                  <!-- ------------------------------------------------------------------- -->
-                  <ul class="sub-menu">
-                      <li><router-link :to="{name: 'aboutyves' }" v-on:click="hideMenu">About Yves</router-link></li>            
-                      <li><router-link :to="{name: 'notif' }" v-on:click="hideMenu">Notification</router-link></li>              
-                      <li><router-link :to="{name: 'spopup' }" v-on:click="hideMenu">Popup</router-link></li>                      
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="#">Users <i class="fas fa-arrow-down"></i></a>
-                <!-- ------------------------------------------------------------------- -->
-                <ul class="sub-menu">
-                  <li><a href="#">One <i class="fas fa-arrow-right"></i></a>
-                    <!-- ------------------------------------------------------------------- -->
-                    <ul class="sub-menu">
-                      <li><router-link :to="{name: 'notyet', params: {from: 'Four', message: 'Four is a stork is not a working feature right now'} }"
-                         v-on:click="hideMenu">Four is a stork</router-link></li>
-                      <li><a href="#">Six is a pig</a></li>
-                      <li><a href="#">Seven is a hen</a></li>
-                      <li><a href="#">Eight</a></li>
-                    </ul>
-                  </li>
-                  <li><router-link :to="{ name: 'notyet', params: {
-                                                            from: 'Two', 
-                                                            message: 'Two will be available in September',
-                                                            ok: 'Home',
-                                                            okroute: 'home',
-                                                            cancel: 'About',
-                                                            cancelroute: 'about',
-                                                            back: 'Contacts',
-                                                            backroute: 'contact' 
-                                                          }}"
-                       v-on:click="hideMenu">Two</router-link></li>
-                  <li><a href="#">Three</a></li>
-                </ul>
-              </li>
-              <li><AppLink to="http://www.heden.fr/" >Heden</AppLink></li>
-              <li><AppLink to="https://www.foscam-france.fr/" >Foscam</AppLink></li>
-              <li><router-link :to="{name: 'contact', params: {
-                      ok:'Home',
-                      okroute: 'home',
-                    }}" 
-              v-on:click="hideMenu">Contacts</router-link></li>
-              <li><router-link :to="{name: 'about' , params: {
-                      ok:'Home',
-                      okroute: 'home',
-                    }}" v-on:click="hideMenu">About</router-link></li>      
               <!-------------------------------------------------------------------------------------------
-                Parametered menu 
+                Generated menu
               --------------------------------------------------------------------------------------------> 
               <span v-for="entry in topmenu" :key="entry.id">
-                <li v-show="entry.enableflag"><AppLink :to="{name: entry.url}" v-on:click="hideMenu">
+                <li v-show="entry.enableflag"><AppLink :to="{name: entry.url, params: entry.params }" v-on:click="hideMenu">
                                               {{entry.text}}
                                               <span v-if="entry.submenu"><i class="fas fa-arrow-down"></i></span>
                                               </AppLink>
                     <ul v-if="entry.submenu" class="sub-menu">
                       <span v-for="subentry in entry.submenuentries" :key="subentry.id">
-                        <li v-if="subentry.isvue" v-show="subentry.enableflag">
-                              <AppLink :to="{name: subentry.url}" v-on:click="hideMenu">
-                                                {{subentry.text}}
-                              </AppLink>
-                        </li>
-                        <li v-if="!subentry.isvue" v-show="subentry.enableflag">
-                            <a target="_blank" href={{subentry.url}}>{{subentry.text}}</a>
+                        <li v-show="subentry.enableflag">
+                                            <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
+                                            {{subentry.text}}
+                                            </AppLink>
                         </li>
                       </span>
                     </ul>
                 </li>
               </span>
+              <li><AppLink to="home">Home</AppLink></li>
+              <li><AppLink to="http://heden.fr">Heden</AppLink></li>
+              <!-- 
+              <li><AppLink to="http://heden.fr">Heden</AppLink></li>
+              <li><AppLink to="https://www.foscam-france.fr/">Foscam</AppLink></li>
+              -->
             </ul>
           </div>
           <p></p>
@@ -120,12 +72,13 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.31: Sep 08 2021";
+    const Version = "topmenu 1.33: Sep 24 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
       displayb: 'flex'
     });
+
     const topmenu =  [
         {
           text: "Home",
@@ -138,35 +91,46 @@ export default {
           enableflag: true,
           submenu: true,
           submenuentries: [
-            { isvue: false,  url: "html-css/University/index.html", params: {}, text: "University", enableflag: true, disableflag: false, },
-          ]
+              { url: "home", params: {}, text: "Back home", enableflag: true, disableflag: false, },
+              { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
+            ]
         },
         {
           text: "Users",
           enableflag: true,
           submenu: true,
           submenuentries: [
-            { isvue: true, url: "login", params: {}, text: "Login", enableflag: true, disableflag: false, },
-            { isvue: true, url: "logout",params: {},text: "Logout", enableflag: false, disableflag: false,},
-            { isvue: true, url: "register", params: { mode: 'STD'},text: "Register", enableflag: true, disableflag: false, },
-            { isvue: true, url: "identity",params: {},text: "Identity", enableflag: false, disableflag: false, },
-            { isvue: true, url: "edit",params: { mode: 'STD'},text: "My profile", enableflag: false, disableflag: false, },
-            { isvue: true, url: "deleteme",params: {},text: "Delete ME!", enableflag: false, disableflag: false, },
+            { url: "notyet", params: {
+                                  message: 'Login will be available soon',
+                                  ok: 'Home',
+                                  okroute: 'home',
+                                },
+                      text: "Login", enableflag: true, disableflag: false, },
+            { url: "notyet",params: {}, text: "Logout", enableflag: false, disableflag: false,},
+            { url: "notyet", params: {
+                                  message: 'Register will be available soon',
+                                  ok: 'Home',
+                                  okroute: 'home',
+                                },
+                      text: "Register", enableflag: true, disableflag: false, },
+            { url: "notyet",params: {},text: "Identity", enableflag: false, disableflag: false, },
+            { url: "notyet",params: { mode: 'STD'},text: "My profile", enableflag: false, disableflag: false, },
+            { url: "notyet",params: {},text: "Delete ME!", enableflag: false, disableflag: false, },
           ]
         },
         {
           text: "Contacts",
           submenu: false,
           enableflag: true,
-          isvue: true, 
           url: "contact",
+          params: { ok:'Home', okroute: 'home'},
         },
         {
           text: "About",
           submenu: false,
           enableflag: true,
-          isvue: true, 
           url: "about",
+          params: { ok:'Home', okroute: 'home'},
         },
       ];
 
