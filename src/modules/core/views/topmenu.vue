@@ -10,7 +10,7 @@
   Sep 09 2021   Follow up.
   Sep 28 2019   Debug the external link detection logic
   0ct 03 2019   Applink detection logic, fix
-                Add 2nd level submenu
+                Add 2nd level submenu support
 -->
 
 <template>
@@ -36,18 +36,37 @@
               <!-------------------------------------------------------------------------------------------
                 Generated menu
               --------------------------------------------------------------------------------------------> 
+              <!-- Top level -->
               <span v-for="entry in topmenu" :key="entry.id">
                 <li v-show="entry.enableflag"><AppLink :to="{name: entry.url, params: entry.params }" v-on:click="hideMenu">
                                               {{entry.text}}
                                               <span v-if="entry.submenu"><i class="fas fa-arrow-down"></i></span>
                                               </AppLink>
                     <ul v-if="entry.submenu" class="sub-menu">
+                      <!-- 1st level -->
                       <span v-for="subentry in entry.submenuentries" :key="subentry.id">
-                        <li v-show="subentry.enableflag">
-                                            <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
-                                            {{subentry.text}}
-                                            </AppLink>
-                        </li>
+                        <ul v-if="subentry.submenu" class="sub-menu">
+                            <li>
+                                  <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
+                                  {{subentry.text}}
+                                  </AppLink>
+                            </li>
+                            <!-- 2nd level -->
+                            <span v-for="subentry2 in subentry.sub2menuentries" :key="subentry2.id">
+                                <li v-show="subentry2.enableflag">
+                                                    <AppLink :to="{name: subentry2.url, params: subentry2.params}" v-on:click="hideMenu">
+                                                    {{subentry2.text}}
+                                                    </AppLink>
+                                </li>
+                            </span>
+                        </ul>
+                        <ul v-else>
+                          <li v-show="subentry.enableflag">
+                                              <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
+                                              {{subentry.text}}
+                                              </AppLink>
+                          </li>
+                        </ul>
                       </span>
                     </ul>
                 </li>
@@ -67,7 +86,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.33: Sep 24 2021";
+    const Version = "topmenu 1.34: Oct 03 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
@@ -87,6 +106,16 @@ export default {
           submenu: true,
           submenuentries: [
               { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
+              { url: "https://www.foscam-france.fr/", params: {}, text: "Foscam", enableflag: true, disableflag: false, },
+              {
+                text: "Cams providers",
+                enableflag: true,
+                submenu: true,
+                sub2menuentries: [
+                  { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
+                  { url: "https://www.foscam-france.fr/", params: {}, text: "Foscam", enableflag: true, disableflag: false, },
+                ]
+              }
             ]
         },
         {
