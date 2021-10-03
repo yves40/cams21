@@ -5,6 +5,7 @@
   Sep 08 2019   Initial
   Sep 24 2019   Problem with external link in sub menus
   Sep 28 2019   Debug the external link detection logic
+  0ct 03 2019   Applink detection logic, fix
 
 -->
 
@@ -31,7 +32,6 @@ export default {
     isExternal() {
       if ( typeof this.to === 'object') {
         if(this.to.name !== undefined) {
-          console.log(this.to.name);
           return this.to.name.startsWith('http');    
         }
         return false

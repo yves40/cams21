@@ -9,7 +9,8 @@
   Sep 08 2021   1 st test with parametered menu entries
   Sep 09 2021   Follow up.
   Sep 28 2019   Debug the external link detection logic
-
+  0ct 03 2019   Applink detection logic, fix
+                Add 2nd level submenu
 -->
 
 <template>
@@ -51,12 +52,6 @@
                     </ul>
                 </li>
               </span>
-              <li><AppLink to="home">Home</AppLink></li>
-              <li><AppLink to="http://heden.fr">Heden</AppLink></li>
-              <!-- 
-              <li><AppLink to="http://heden.fr">Heden</AppLink></li>
-              <li><AppLink to="https://www.foscam-france.fr/">Foscam</AppLink></li>
-              -->
             </ul>
           </div>
           <p></p>
@@ -91,7 +86,6 @@ export default {
           enableflag: true,
           submenu: true,
           submenuentries: [
-              { url: "home", params: {}, text: "Back home", enableflag: true, disableflag: false, },
               { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
             ]
         },
@@ -117,6 +111,12 @@ export default {
             { url: "notyet",params: { mode: 'STD'},text: "My profile", enableflag: false, disableflag: false, },
             { url: "notyet",params: {},text: "Delete ME!", enableflag: false, disableflag: false, },
           ]
+        },
+        {
+          text: "Heden",
+          submenu: false,
+          enableflag: true,
+          url: "http://heden.fr",
         },
         {
           text: "Contacts",
