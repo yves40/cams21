@@ -21,3 +21,5 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+src/modules/core/views/topmenu.vue
+package-lock.json

@@ -8,8 +8,8 @@
   Sep 07 2021   Sub menu spacing for small screen
   Sep 08 2021   1 st test with parametered menu entries
   Sep 09 2021   Follow up.
-  Sep 28 2019   Debug the external link detection logic
-  0ct 03 2019   Applink detection logic, fix
+  Sep 28 2021   Debug the external link detection logic
+  0ct 03 2021   Applink detection logic, fix
                 Add 2nd level submenu support
 -->
 
