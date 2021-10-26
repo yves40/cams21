@@ -46,12 +46,12 @@
                       <!-- 1st level -->
                       <span v-for="subentry in entry.submenuentries" :key="subentry.id">
                         <ul v-if="subentry.submenu" class="sub-menu">
+                            <!-- 2nd level -->
                             <li>
                                   <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
                                   {{subentry.text}}
                                   </AppLink>
                             </li>
-                            <!-- 2nd level -->
                             <span v-for="subentry2 in subentry.sub2menuentries" :key="subentry2.id">
                                 <li v-show="subentry2.enableflag">
                                                     <AppLink :to="{name: subentry2.url, params: subentry2.params}" v-on:click="hideMenu">
@@ -61,6 +61,7 @@
                             </span>
                         </ul>
                         <ul v-else>
+                          <!-- No second level menu -->
                           <li v-show="subentry.enableflag">
                                               <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
                                               {{subentry.text}}
