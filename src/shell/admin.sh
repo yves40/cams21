@@ -11,11 +11,12 @@
 #	  Jun 22 2021  	Some new command line qualifiers
 #	  Jun 29 2021  	RECO start new cams2021 web app on zerasp
 #	  Aug 09 2021  	Start the node server with --watch on zerasp
+#	  Nov 01 2021  	Why define CAMSHOME in this script ? 
 #--------------------------------------------------------------------------------
-VERSION="admin.sh v 1.20, "
-VERSIONDATE="Aug 09 2021 "
+VERSION="admin.sh v 1.21, "
+VERSIONDATE="Nov 01 2021 "
 LOG="/tmp/nodeadmin.log"
-CAMSHOME='/home/node/cams2021'
+# CAMSHOME='/home/node/cams2021'
 #--------------------------------------------------------------------------------
 # Logger
 #--------------------------------------------------------------------------------
