@@ -5,6 +5,7 @@
     Jun 19 2021       Initial. cams2021 no longer use bootstrap...
     Jun 20 2021       No longer copy .bashrc from node env to root login
     Jun 29 2021       motd.txt file
+    Nov 01 2021       cams2021 becomes cams21
 
 ****************************************************************************************************** -->
 <project name="assessment" default="help" basedir="." >
@@ -13,16 +14,16 @@
     <target name="help" description="What's in this build file">
         <echo message="************************ @  Targets available "></echo>
         <echo message=""></echo>
-        <echo message="************************ @  .......... cams2021zerasp   : cams2021 on Raspberry pi"></echo>
-        <echo message="************************ @  .......... cams2021vboxnode : cams2021 on VirtualBox inside asusp7"></echo>
-        <echo message="************************ @  .......... rootfileszerasp  : Deploy some unix admin files to root"></echo>
+        <echo message="************************ @  .......... cams21zerasp    : cams21 on Raspberry pi"></echo>
+        <echo message="************************ @  .......... cams21vboxnode  : cams21 on VirtualBox inside asusp7"></echo>
+        <echo message="************************ @  .......... rootfileszerasp : Deploy some unix admin files to root"></echo>
         <echo message=""></echo>
     </target>
 
     <!-- ===================================================================================== -->
     <!-- Hosts deployment : zerasp-->
     <!-- ===================================================================================== -->
-    <target name="cams2021zerasp" depends="cleanup">
+    <target name="cams21zerasp" depends="cleanup">
         <echo message="************************ @ deploy node cams to ${zerasp.server}"></echo>
         <antcall target="nodekit">
             <param name="shellnode" value="zerasp"/>
@@ -31,17 +32,17 @@
         <antcall target="serverupdate">
             <param name="remoteserver" value="${zerasp.server}"/>
             <param name="localdir" value="${build.workdir}"/>
-            <param name="localzip" value="cams2021.zip"/>
-            <param name="remotenetdir" value="${zerasp.approot}/cams2021"/>
+            <param name="localzip" value="cams21.zip"/>
+            <param name="remotenetdir" value="${zerasp.approot}/cams21"/>
             <param name="remoteaccount" value="${zerasp.nodeuser}"/>
             <param name="remoteaccountpass" value="${zerasp.nodepassword}"/>
         </antcall>
         <!-- Manage the .bashrc file -->
-        <sshexec command="cp ${zerasp.approot}/cams2021/src/shell/.bashrc ~/.bashrc" host="${zerasp.server}" username="${zerasp.nodeuser}"
+        <sshexec command="cp ${zerasp.approot}/cams21/src/shell/.bashrc ~/.bashrc" host="${zerasp.server}" username="${zerasp.nodeuser}"
                  password="${zerasp.nodepassword}"
                  trust="true" verbose="${zip.verbosemode}"/>
         <!-- chmod for shell script -->
-        <sshexec command="chmod +x ${zerasp.approot}/cams2021/src/shell/*.sh" host="${zerasp.server}" username="${zerasp.nodeuser}"
+        <sshexec command="chmod +x ${zerasp.approot}/cams21/src/shell/*.sh" host="${zerasp.server}" username="${zerasp.nodeuser}"
                  password="${zerasp.nodepassword}"
                  trust="true" verbose="${zip.verbosemode}"/>
     </target>
@@ -49,7 +50,7 @@
     <!-- ===================================================================================== -->
     <!-- Hosts deployment : vboxnodelo -->
     <!-- ===================================================================================== -->
-    <target name="cams2021vboxnode" depends="cleanup">
+    <target name="cams21vboxnode" depends="cleanup">
         <echo message="************************ @ deploy node cams to ${vboxnodelo.server}"></echo>
         <antcall target="nodekit">
             <param name="shellnode" value="vboxnodelo"/>
@@ -58,17 +59,17 @@
         <antcall target="serverupdate">
             <param name="remoteserver" value="${vboxnodelo.server}"/>
             <param name="localdir" value="${build.workdir}"/>
-            <param name="localzip" value="cams2021.zip"/>
-            <param name="remotenetdir" value="${vboxnodelo.approot}/cams2021"/>
+            <param name="localzip" value="cams21.zip"/>
+            <param name="remotenetdir" value="${vboxnodelo.approot}/cams21"/>
             <param name="remoteaccount" value="${vboxnodelo.nodeuser}"/>
             <param name="remoteaccountpass" value="${vboxnodelo.nodepassword}"/>
         </antcall>
         <!-- Manage the .bashrc file -->
-        <sshexec command="cp ${vboxnodelo.approot}/cams2021/src/shell/.bashrc ~/.bashrc" host="${vboxnodelo.server}" username="${vboxnodelo.nodeuser}"
+        <sshexec command="cp ${vboxnodelo.approot}/cams21/src/shell/.bashrc ~/.bashrc" host="${vboxnodelo.server}" username="${vboxnodelo.nodeuser}"
                  password="${vboxnodelo.nodepassword}"
                  trust="true" verbose="${zip.verbosemode}"/>
         <!-- chmod for shell script -->
-        <sshexec command="chmod +x ${vboxnodelo.approot}/cams2021/src/shell/*.sh" host="${vboxnodelo.server}" username="${vboxnodelo.nodeuser}"
+        <sshexec command="chmod +x ${vboxnodelo.approot}/cams21/src/shell/*.sh" host="${vboxnodelo.server}" username="${vboxnodelo.nodeuser}"
                  password="${vboxnodelo.nodepassword}"
                  trust="true" verbose="${zip.verbosemode}"/>
     </target>
@@ -134,8 +135,8 @@
     <!-- This task cleans the local build folder -->
     <!-- ===================================================================================== -->
     <target name="cleanup" depends="dir.check" if="dir.exists">
-        <echo message="************************ @  Clean the build environment : ${build.workdir}"></echo>
-        <delete file="${build.workdir}/*.*" verbose="${delete.verbosemode}" includeemptydirs="true">
+        <echo message="************************ @  Cleanup the build environment : ${build.workdir}"></echo>
+        <delete file="${build.workdir}" verbose="${delete.verbosemode}" includeemptydirs="true">
             <fileset dir="${build.workdir}" />
         </delete>
     </target>
