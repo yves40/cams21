@@ -1,3 +1,7 @@
+<!-- 
+
+  Jan 01 2021   Initial
+-->
 <template>
   <!DOCTYPE html>
   <html lang="en">
@@ -25,7 +29,7 @@
 <script>
 export default {
   setup() {
-    const Version = 'cams21: Oct 26 2021, 1.23';
+    const Version = 'cams21: Nov 02 2021, 1.24';
     const Company = "RECO Dev Corporation Limited";
     return {
       Version,
