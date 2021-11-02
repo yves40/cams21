@@ -6,6 +6,7 @@
 #	Jun 21 2021		Remove echo messages to avoid ant deployment process failure
 #	Jun 22 2021		ll alias
 #	Jun 27 2021		motd
+#	Nov 02 2021		2021 moved to 21
 #----------------------------------------------------------------------------------------
 
 # Source global definitions
@@ -37,8 +38,8 @@ export CAMPASS=dumb
 export CAMURL="https://jsonplaceholder.typicode.com/users/2"
 
 export COMPUTERNAME=`hostname`
-export CAMSHOME='/home/node/cams2021'
-export CH='/home/node/cams2021'
+export CAMSHOME='/home/node/cams21'
+export CH='/home/node/cams21'
 
 # User specific aliases and functions
 alias shsys='ps -edf | grep -i '

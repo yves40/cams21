@@ -12,9 +12,10 @@
 #	  Jun 29 2021  	RECO start new cams2021 web app on zerasp
 #	  Aug 09 2021  	Start the node server with --watch on zerasp
 #	  Nov 01 2021  	Why define CAMSHOME in this script ? 
+#	  Nov 02 2021  	devzerasp
 #--------------------------------------------------------------------------------
-VERSION="admin.sh v 1.21, "
-VERSIONDATE="Nov 01 2021 "
+VERSION="admin.sh v 1.22, "
+VERSIONDATE="Nov 02 2021 "
 LOG="/tmp/nodeadmin.log"
 # CAMSHOME='/home/node/cams2021'
 #--------------------------------------------------------------------------------
@@ -69,7 +70,7 @@ Start()
             cd $CAMSHOME
             case $x in 
               'zerasp')    # avoid -watch on the raspberry to spare some cpu
-                        npm run dev&
+                        npm run devzerasp&
                       ;;
               'vboxnode')  
                         npm run dev&
