@@ -34,7 +34,7 @@
           <div id="navLinks">
             <ul class="nav-list"  v-bind:style="{ right: state.right }">
               <!-------------------------------------------------------------------------------------------
-                Generated menu
+                Generated menu, based on the json "topmenu" structure below
               --------------------------------------------------------------------------------------------> 
               <!-- Top level -->
               <span v-for="entry in topmenu" :key="entry.id">
@@ -75,7 +75,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.35: Nov 06 2021";
+    const Version = "topmenu 1.36: Nov 06 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
