@@ -44,20 +44,19 @@
                                               </AppLink>
                     <ul v-if="entry.submenu" class="sub-menu">
                       <!-- 1st level -->
-                      <span v-for="subentry in entry.submenuentries" :key="subentry.id">
-                        <ul v-if="subentry.submenu" class="sub-menu">
-                            <!-- 2nd level -->
-                            <li>{{subentry.text}}</li>
-                        </ul>
-                        <ul v-else>
-                          <!-- No second level menu -->
-                          <li v-show="subentry.enableflag">
-                                              <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
-                                              {{subentry.text}}
-                                              </AppLink>
-                          </li>
-                        </ul>
-                      </span>
+                      <li v-for="subentry in entry.submenuentries" :key="subentry.id" v-show="subentry.enableflag">
+                                <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
+                                {{subentry.text}}
+                                </AppLink>
+                          <ul v-if="subentry.submenu" class="sub-menu">
+                              <!-- 2nd level -->
+                              <li v-for="subentry2 in subentry.sub2menuentries" :key="subentry2.id" v-show="subentry2.enableflag">
+                                      <AppLink :to="{name: subentry2.url, params: subentry2.params}" v-on:click="hideMenu">
+                                      {{subentry2.text}}
+                                      </AppLink>
+                              </li>
+                          </ul>
+                      </li>
                     </ul>
                 </li>
               </span>
@@ -76,7 +75,7 @@
 import { reactive } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.34: Oct 03 2021";
+    const Version = "topmenu 1.35: Nov 06 2021";
     let state = reactive ( {
       right: '-200px',
       displayt: 'none',
