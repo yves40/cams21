@@ -103,6 +103,8 @@ export default {
                 sub2menuentries: [
                   { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
                   { url: "https://www.foscam-france.fr/", params: {}, text: "Foscam", enableflag: true, disableflag: false, },
+                  { text: "Contacts", submenu: false, enableflag: true, url: "contact", params: { ok:'Home', okroute: 'home'},
+        },
                 ]
               }
             ]
