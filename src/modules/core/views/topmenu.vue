@@ -51,12 +51,18 @@
                   </span>
                   <ul v-if="entry.submenu" class="sub-menu">
                     <!-- 1st level -->
-                    <li v-for="subentry in entry.submenuentries" :key="subentry.id" 
-                      v-show="subentry.enableflag">
-                        <AppLink :to="{name: subentry.url, params: subentry.params}" >
-                        {{subentry.text}}
-                        <span v-if="subentry.submenu"><i class="fas fa-arrow-down"></i></span>
-                        </AppLink>
+                    <span v-for="subentry in entry.submenuentries" :key="subentry.id">
+                      <li v-show="subentry.enableflag">
+                        <span v-if="subentry.submenu">
+                          {{subentry.text}}
+                          <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span v-else>
+                          <AppLink :to="{name: subentry.url, params: subentry.params }" 
+                            v-on:click="hideMenu">
+                            {{subentry.text}}
+                          </AppLink>
+                        </span>
                         <ul v-if="subentry.submenu" class="sub-menu">
                             <!-- 2nd level -->
                             <li v-for="subentry2 in subentry.sub2menuentries" :key="subentry2.id" 
@@ -67,7 +73,8 @@
                                     </AppLink>
                             </li>
                         </ul>
-                    </li>
+                      </li>
+                    </span>
                   </ul>
                 </li>
               </span>
@@ -86,7 +93,7 @@
 import { reactive, onBeforeUnload, onBeforeUnmount, onUpdated, onDeactivated } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.44: Nov 19 2021";
+    const Version = "topmenu 1.45: Nov 19 2021";
     let state = reactive ( {
       right: '-300px',
       displayt: 'none',
