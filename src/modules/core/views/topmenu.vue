@@ -53,7 +53,7 @@
                   <ul v-if="entry.submenu" class="sub-menu">
                     <!-- 1st level -->
                     <li v-for="subentry in entry.submenuentries" :key="subentry.id" v-show="subentry.enableflag">
-                              <AppLink :to="{name: subentry.url, params: subentry.params}" v-on:click="hideMenu">
+                              <AppLink :to="{name: subentry.url, params: subentry.params}" >
                               {{subentry.text}}
                               <span v-if="subentry.submenu"><i class="fas fa-arrow-down"></i></span>
                               </AppLink>
@@ -84,9 +84,9 @@
 import { reactive, onBeforeUnload, onBeforeUnmount, onUpdated, onDeactivated } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.43: Nov 11 2021";
+    const Version = "topmenu 1.44: Nov 19 2021";
     let state = reactive ( {
-      right: '-200px',
+      right: '-300px',
       displayt: 'none',
       displayb: 'flex'
     });
