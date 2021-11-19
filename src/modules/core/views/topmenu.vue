@@ -41,26 +41,30 @@
                 <li v-show="entry.enableflag">
                   <span v-if="entry.submenu">
                     <AppLink :to="{name: entry.url, params: entry.params }">
-                                  {{entry.text}}
-                                  <i class="fas fa-arrow-down"></i>
+                      {{entry.text}}
+                      <i class="fas fa-arrow-down"></i>
                     </AppLink>
                   </span>
                   <span v-else>
-                    <AppLink :to="{name: entry.url, params: entry.params }" v-on:click="hideMenu">
-                                              {{entry.text}}
+                    <AppLink :to="{name: entry.url, params: entry.params }" 
+                      v-on:click="hideMenu">
+                      {{entry.text}}
                     </AppLink>
                   </span>
                   <ul v-if="entry.submenu" class="sub-menu">
                     <!-- 1st level -->
-                    <li v-for="subentry in entry.submenuentries" :key="subentry.id" v-show="subentry.enableflag">
-                              <AppLink :to="{name: subentry.url, params: subentry.params}" >
-                              {{subentry.text}}
-                              <span v-if="subentry.submenu"><i class="fas fa-arrow-down"></i></span>
-                              </AppLink>
+                    <li v-for="subentry in entry.submenuentries" :key="subentry.id" 
+                      v-show="subentry.enableflag">
+                        <AppLink :to="{name: subentry.url, params: subentry.params}" >
+                        {{subentry.text}}
+                        <span v-if="subentry.submenu"><i class="fas fa-arrow-down"></i></span>
+                        </AppLink>
                         <ul v-if="subentry.submenu" class="sub-menu">
                             <!-- 2nd level -->
-                            <li v-for="subentry2 in subentry.sub2menuentries" :key="subentry2.id" v-show="subentry2.enableflag">
-                                    <AppLink :to="{name: subentry2.url, params: subentry2.params}" v-on:click="hideMenu">
+                            <li v-for="subentry2 in subentry.sub2menuentries" :key="subentry2.id" 
+                              v-show="subentry2.enableflag">
+                                    <AppLink :to="{name: subentry2.url, params: subentry2.params}" 
+                                    v-on:click="hideMenu">
                                     {{subentry2.text}}
                                     </AppLink>
                             </li>
