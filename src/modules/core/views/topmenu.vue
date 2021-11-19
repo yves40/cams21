@@ -40,10 +40,8 @@
               <span v-for="entry in topmenu" :key="entry.id">
                 <li v-show="entry.enableflag">
                   <span v-if="entry.submenu">
-                    <AppLink :to="{name: entry.url, params: entry.params }">
                       {{entry.text}}
                       <i class="fas fa-arrow-down"></i>
-                    </AppLink>
                   </span>
                   <span v-else>
                     <AppLink :to="{name: entry.url, params: entry.params }" 

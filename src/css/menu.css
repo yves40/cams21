@@ -62,7 +62,11 @@ li i {  /* Separate arrows from text in menus */
 
 ul li a {
   color: white;
+  font-size: 18px;
   text-decoration: none;
+}
+ul li {
+  color: white;
   font-size: 18px;
 }
 
