@@ -1,0 +1,4 @@
+GET http://zeraspeth:8081/mongo/status
+Content-Type: application/json
+
+

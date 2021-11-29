@@ -1,0 +1,5 @@
+GET http://zeraspeth:8081/users/list
+Content-Type: application/json
+Authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNmZiNTIxM2YxOTdjMTFjNDdmYmY3OCIsImVtYWlsIjoieXZlc0BmcmVlLmZyIiwiaWF0IjoxNjM4MjAwMjg0LCJleHAiOjE2MzgyMDA4ODR9.XDnvqYWbOzv0KyxVuysgNelJD_8anZRwDTRqIvdhylU
+
+
