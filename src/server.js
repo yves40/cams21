@@ -19,6 +19,7 @@
     Feb 26 2020   Change cors client site identification
     Jun 20 2021   RECO. Deploy from new cams2021 project
     Jul 17 2021   Reorg. cams-boostrap to cams2021. Fix some messages
+    Nov 29 2021   Check cors site with NODENAME
 ----------------------------------------------------------------------------*/
 const allroutes = require('./node-router/allroutes')
 const express = require('express');
@@ -32,7 +33,7 @@ const corshelper = require('./modules/core/services/corshelper');
 const cors = require('cors');
 const mongologgerclass = require('./modules/core/classes/mongologgerclass');
 
-const Version = 'server.js:1.41, Jul 17 2021';
+const Version = 'server.js:1.42, Nov 29 2021';
 
 const app = express();
 //---------------------------------------------------------------------------------------------------------
@@ -96,7 +97,7 @@ allroutes.loadRoutes(app);
 logger.info("---------------------------------------------------------");
 logger.info('CORS Security setting: webserver node');
 logger.info("---------------------------------------------------------");
-logger.info('Site : ' + corshelper.getClientSite());
+logger.info('Site : ' + corshelper.getClientSite(process.env.NODENAME));
 app.use(cors(corshelper.getCORS()));
 // Let's start the server
 app.listen(properties.nodeserverport, ()=>{

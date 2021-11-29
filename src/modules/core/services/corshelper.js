@@ -16,8 +16,9 @@
 //    Mar 26 2020   zerasp deployment with a browser from android tablet
 //    Mar 28 2020   Trying to solve multi test environments problems
 //    Apr 06 2020   Tests for corsclient
+//    Nov 29 2021   RYZEN setup
 //----------------------------------------------------------------------------
-const Version = "corshelper:1.31, Apr 06 2020 ";
+const Version = "corshelper:1.32, Nov 29 2021 ";
 
 
 // CORS sites enabled for cross server requests
@@ -27,7 +28,7 @@ const corsclients = [
   { node: '192.168.47.168', origin: 'http://192.168.47.168:8088' }, // To access from Galaxy tab (no host file)
   { node: 'zerasp', origin: 'http://zerasp:8088' },
   { node: 'vboxnode', origin: 'http://vboxnode:8088' },
-  { node: 'ASUSP4', origin: 'http://localhost:8080' },
+  { node: 'RYZEN', origin: 'http://localhost:8080' },
   { node: 'ASUSP7', origin: 'http://localhost:8080' },
 ];
 
