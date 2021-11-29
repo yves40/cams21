@@ -43,6 +43,7 @@
 //    Mar 25 2020   Add symbolic names to nodeservercandidates
 //    Apr 04 2020   Change symbolic names for nodeservercandidates
 //    Jul 17 2021   Fix typo error 
+//    Nov 29 2021   set up mongodb params for RYZEN
 //----------------------------------------------------------------------------
 // eslint-disable-next-line no-unused-vars
 const Version = 'properties:1.59, Jul 17 2021 ';
@@ -71,6 +72,7 @@ const mongolist = [
     { node: 'vboxnode', url: 'mongodb://camsapi:27017/cams'},
     { node: 'ASUSP4', url: 'mongodb://192.168.47.24:27017/cams'},   // Instead of local .111
     { node: 'ASUSP7', url: 'mongodb://camsapi:27017/cams'},
+    { node: 'RYZEN', url: 'mongodb://camsapi:27017/cams'},
 ];
 const MONGODELAYCHECK = 1000;   // For the web interface
 const MONGOSERVERCHECK = 10000  // For the Express server to retry mongodb connection 
