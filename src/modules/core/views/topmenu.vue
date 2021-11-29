@@ -33,10 +33,6 @@
           <!-- ------------------------------------------------------------------- -->
           <div id="navLinks">
             <ul class="nav-list"  v-bind:style="{ right: state.right }">
-              <!-------------------------------------------------------------------------------------------
-                Generated menu, based on the json "topmenu" structure below
-              --------------------------------------------------------------------------------------------> 
-              <!-- Top level -->
               <span v-for="entry in topmenu" :key="entry.id">
                 <li v-show="entry.enableflag">
                   <span v-if="entry.submenu">
@@ -50,7 +46,6 @@
                     </AppLink>
                   </span>
                   <ul v-if="entry.submenu" class="sub-menu">
-                    <!-- 1st level -->
                     <span v-for="subentry in entry.submenuentries" :key="subentry.id">
                       <li v-show="subentry.enableflag">
                         <span v-if="subentry.submenu">
@@ -93,9 +88,9 @@
 import { reactive, onBeforeUnload, onBeforeUnmount, onUpdated, onDeactivated } from 'vue';
 export default {
   setup() {
-    const Version = "topmenu 1.45: Nov 19 2021";
+    const Version = "topmenu 1.47: Nov 20 2021";
     let state = reactive ( {
-      right: '-300px',
+      right: '-250px',
       displayt: 'none',
       displayb: 'flex'
     });
@@ -106,25 +101,6 @@ export default {
           enableflag: true,
           submenu: false,
           url: "home",
-        },
-        {
-          text: "Sandbox",
-          enableflag: true,
-          submenu: true,
-          submenuentries: [
-              { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
-              { url: "https://www.foscam-france.fr/", params: {}, text: "Foscam", enableflag: true, disableflag: false, },
-              {
-                text: "Cams providers",
-                enableflag: true,
-                submenu: true,
-                sub2menuentries: [
-                  { text: "Contacts", submenu: false, enableflag: true, url: "contact",params: { ok:'Home', okroute: 'home'}, },
-                  { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
-                  { url: "https://www.foscam-france.fr/", params: {}, text: "Foscam", enableflag: true, disableflag: false, },
-                ]
-              }
-            ]
         },
         {
           text: "Users",
@@ -150,10 +126,22 @@ export default {
           ]
         },
         {
-          text: "Heden",
-          submenu: false,
+          text: "Sandbox",
           enableflag: true,
-          url: "http://heden.fr",
+          submenu: true,
+          submenuentries: [
+              { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
+              { url: "https://www.foscam-france.fr/", params: {}, text: "Foscam", enableflag: true, disableflag: false, },
+              {
+                text: "Cams providers",
+                enableflag: true,
+                submenu: true,
+                sub2menuentries: [
+                  { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
+                  { url: "https://www.foscam-france.fr/", params: {}, text: "Foscam", enableflag: true, disableflag: false, },
+                ]
+              }
+            ]
         },
         {
           text: "Contacts",
@@ -182,7 +170,7 @@ export default {
       state.displayb = "none"
     }
     function hideMenu() {
-      state.right = '-300px';
+      state.right = '-250px';
       state.displayt = "none"
       state.displayb = "flex"
     }
