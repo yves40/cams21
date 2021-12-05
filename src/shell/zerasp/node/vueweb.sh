@@ -3,7 +3,7 @@
 #
 #       Dec 05 2021   Initial
 #--------------------------------------------------------------------------------
-VERSION="vueweb.sh 1.04: Dec 05 2021"
+VERSION="vueweb.sh 1.05: Dec 05 2021"
 LOG="/tmp/vueweb.log"
 CAMSHOME="/home/node/cams21"
 #--------------------------------------------------------------------------------
@@ -31,8 +31,6 @@ case $1 in
                         	npm run dev&
                       		;;
             	esac
-            	cd $ret
-		log "Start is done"
             	;;
 	"stop")
 		log " >>>>> Stopping now" 
