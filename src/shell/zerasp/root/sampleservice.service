@@ -1,0 +1,10 @@
+[Unit]
+Description=The sample service by Yves
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/node/sampleservice.sh start  &
+ExecStop=/bin/bash /home/node/sampleservice.sh stop
+
+[Install]
+WantedBy=multi-user.target
