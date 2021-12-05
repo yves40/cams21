@@ -1,0 +1,10 @@
+[Unit]
+Description=The Vue web service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/node/vueweb.sh start  &
+ExecStop=/bin/bash /home/node/vueweb.sh stop
+
+[Install]
+WantedBy=multi-user.target
