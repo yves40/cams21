@@ -1,9 +1,12 @@
 #--------------------------------------------------------------------------------
 #       vueweb.sh
 #
-#       Dec 05 2021   Initial
+#       Dec 05 2021 Initial
+#       Dec 07 2021 vueweb start / stop execute problem
+#					Problem came from the service definition in 
+#					/lib/systemd/system/vueweb.service
 #--------------------------------------------------------------------------------
-VERSION="vueweb.sh 1.05: Dec 05 2021"
+VERSION="vueweb.sh 1.07: Dec 07 2021"
 LOG="/tmp/vueweb.log"
 CAMSHOME="/home/node/cams21"
 #--------------------------------------------------------------------------------
@@ -23,8 +26,8 @@ case $1 in
             	ret=`pwd`
             	cd $CAMSHOME
 		log "Switching to $CAMSHOME"
-            	case $x in
-       		       	'zerasp') 
+		case $x in
+       		       	'zerasp')
                         	npm run devzeraspeth&
        		               	;;
               		'vboxnode')
