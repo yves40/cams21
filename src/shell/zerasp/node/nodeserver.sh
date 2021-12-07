@@ -1,12 +1,9 @@
 #--------------------------------------------------------------------------------
-#       vueweb.sh
+#       nodeserver.sh
 #
-#       Dec 05 2021   Initial
-#       Dec 07 2021   start / stop serial execute problem
-#			Problem came from the service definition in 
-#			/lib/systemd/system/vueweb.service
+#       Dec 07 2021   Initial
 #--------------------------------------------------------------------------------
-VERSION="vueweb.sh 1.08: Dec 07 2021"
+VERSION="nodeserver.sh 1.02: Dec 07 2021"
 LOG="/tmp/cams21.log"
 CAMSHOME="/home/node/cams21"
 #--------------------------------------------------------------------------------
@@ -20,34 +17,26 @@ log()
 
 case $1 in 
 	"start")
-		log " >>>>> starting Vue application web server " 
+		log " >>>>> starting the API node server now" 
             	x=`hostname`
             	ret=`pwd`
             	cd $CAMSHOME
 		log "Switching to $CAMSHOME"
 		case $x in
        		       	'zerasp')
-                        	npm run devzeraspeth&
+                        	pm2 start $CAMSHOME/src/server.js --name camsserver --watch
        		               	;;
               		'vboxnode')
-                        	npm run dev&
+                        	pm2 start $CAMSHOME/src/server.js --watch --ignore-watch='node_modules' --name camsserver
                       		;;
             	esac
             	;;
 	"stop")
-		log " >>>>> Stopping the Vue application web server " 
-		ps -edf | grep -v grep | grep -i  -e 'webpack-dev-server
-vue-cli-service' > processlist
-            	while read line
-            	do
-              		pid=`echo "$line" | awk '/ / { print $2 }';`
-              		log "[!!!] $pid killed"
-              		kill $pid
-            	done < processlist
-            	rm -f processlist
+		log " >>>>> Stopping now the API node server" 
+		pm2 delete all
 		;;
 	"status")
-		systemctl status vueweb
+		systemctl status nodeserver
 		;;
 esac
 exit 0

@@ -1,0 +1,10 @@
+[Unit]
+Description=Vue application node service
+
+[Service]
+Type=forking
+ExecStart=/bin/bash /home/node/nodeserver.sh start 
+ExecStop=/bin/bash /home/node/nodeserver.sh stop
+
+[Install]
+WantedBy=multi-user.target
