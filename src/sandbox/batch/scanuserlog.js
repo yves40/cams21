@@ -13,15 +13,17 @@
 //    Nov 24 2019    Integrate cams-bootstrap4
 //    Nov 26 2019    user class changed
 //    Nov 27 2019    -h qualifier
+//    Jan 09 2022     Directory reorg. Relaunch after 2 years !!!
 //----------------------------------------------------------------------------
 
-const Version = "scanuserlog.js:1.41 Nov 27 2019 ";
+const Version = "scanuserlog.js:1.42 Jan 09 2022 ";
 
-const userclass = require('../classes/userclass');
-const userLog = require('../model/userLogModel');
-const logger = require('../../core/services/logger');
-const datetime = require('../../core/services/datetime');
-const mongo = require('../../core/services/mongodb');
+const userclass = require('../../modules/users/classes/userclass');
+const userLog = require('../../modules/users/model/userLogModel');
+const mongo = require('../../modules/core/services/mongodb');
+const datetime = require('../../modules/core/services/datetime');
+const logger = require("../../modules/core/services/logger");
+
 
 let useremail = undefined;
 let loglimit = undefined;

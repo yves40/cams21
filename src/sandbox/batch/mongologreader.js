@@ -11,15 +11,17 @@
 //    Nov 27 2019     Port to cam-bootstrap4
 //    Dec 06 2019     new field in report
 //                    -m qualifier to search for specific email field in log
+//    Jan 09 2022     Directory reorg. Relaunch after 2 years !!!
 //-------------------------------------------------------------------------------
 
-const Version = "mongologreader.js:1.32 Dec 06 2019 ";
+const Version = "mongologreader.js:1.33 Jan 09 2022 ";
 
-const mongo = require('../services/mongodb');
-const datetime = require('../services/datetime');
-const logger = require("../services/logger");
-const Mongolog = require ('../model/mongoLogModel');
+const mongo = require('../../modules/core/services/mongodb');
+const datetime = require('../../modules/core/services/datetime');
+const logger = require("../../modules/core/services/logger");
+const Mongolog = require ('../../modules/core/model/mongoLogModel');
 
+// eslint-disable-next-line no-unused-vars
 const ObjectId = require('mongodb').ObjectId;
 
 let useremail = null;
@@ -37,7 +39,6 @@ let helprequested = false;
 function parseCommandLine() {
   let index = 0;
   let value = undefined;
-  let nbrargs = process.argv.length - 2;
   for (index = 2; index < process.argv.length; ) {
     let keyword = process.argv[index];
     switch(keyword) {

@@ -4,16 +4,18 @@
 //    Mar 19 2020     Initial
 //    Mar 21 2020     Spring time and coronavirus
 //    Mar 22 2020     Spring time and coronavirus: few more tests
+//    Jan 09 2022     Directory reorg. Relaunch after 2 years !!!
 //-------------------------------------------------------------------------------
 
-const Version = "testaxios.js:1.16 Mar 22 2020 ";
+const Version = "testaxios.js:1.17 Jan 09 2022 ";
 
-const logger = require("../services/logger");
-const axiosclass = require('../classes/axiosclass');
+const logger = require("../../modules/core/services/logger");
+const axiosclass = require('../../modules/core/classes/axiosclass');
 const DELAY = 5000;
 //----------------------------------------------------------------------------
 // ussage
 //----------------------------------------------------------------------------
+// eslint-disable-next-line no-unused-vars
 function usage() {
 
   console.log('\n\n');
