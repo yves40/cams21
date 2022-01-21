@@ -11,6 +11,7 @@
   Sep 28 2021   Debug the external link detection logic
   0ct 03 2021   Applink detection logic, fix
                 Add 2nd level submenu support
+  Jan 09 2022   Link to components tester screen in sandbox
 -->
 
 <template>
@@ -130,6 +131,7 @@ export default {
           enableflag: true,
           submenu: true,
           submenuentries: [
+              { url: "componentstester", params: {}, text: "Test Components", enableflag: true, disableflag: false, },
               { url: "http://heden.fr", params: {}, text: "Heden", enableflag: true, disableflag: false, },
               { url: "https://www.foscam-france.fr/", params: {}, text: "Foscam", enableflag: true, disableflag: false, },
               {

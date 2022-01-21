@@ -7,10 +7,11 @@
 //    Sep 02 2021   about has params now
 //                  Play with teleport
 //    Sep 03 2021   Another teleport sample
+//    Jan 09 2022   Insert the components tester vue
 //----------------------------------------------------------------------------
 
 /* eslint-disable no-unused-vars */
-const Version = "coreroutes.js: Sep 03 2021, 1.07 ";
+const Version = "coreroutes.js: Jan 09 2022, 1.08 ";
 
 import notyet from "../views/notyet";
 import home from '../views/home.vue'
@@ -20,6 +21,7 @@ import notfound from '../views/notfound'
 import aboutyves from '../views/aboutyves'
 import notif from '../components/NotificationHandler'
 import spopup from '../components/Simplepopup'
+import componentstester from '../views/componentstester'
 
 
 const  coreroutes = 
@@ -32,6 +34,7 @@ const  coreroutes =
     { path: '/notif', name: 'notif',component:notif, props: true },
     { path: '/spopup', name: 'spopup',component:spopup, props: true },
     { path: '/contact', name: 'contact',component: contact, props: true },  
+    { path: '/componentstester', name: 'componentstester',component: componentstester, props: true },  
     { path: "/:catchAll(.*)",name: 'catch', component: notfound},
   ];
 

@@ -1,0 +1,67 @@
+
+/*------------------------------------------------------------
+  form.css
+
+  Jan 09 2022       Initial from vue2-vu3-testbed
+-------------------------------------------------------------*/
+.moduletitle {  font-style: italic; font-size: small; padding-top: 1em; padding-bottom: .5em; }
+
+.centered-form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40rem;
+  padding: 0.4em;
+  border: 1px solid;
+  align-items: center;
+}
+
+.calc-form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20rem;
+  padding: 0.4em;
+  border: 1px solid;
+}
+.field {
+  width: 3rem;
+  margin: 2px;
+  text-align: center;
+}
+
+.grid2-80 {
+  display:grid;
+  grid-gap: 10px; 
+  grid-template-columns: 80% 20%;
+  margin: auto;
+  max-width: 80%;
+  align-items: center;
+}
+
+.grid2-60 {
+  display:grid;
+  grid-gap: 10px; 
+  grid-template-columns: 60% 40%;
+  margin: auto;
+  max-width: 60%;
+  align-items: center;
+}
+
+.grid3 {
+  display:grid;
+  grid-gap: 10px; 
+  grid-template-columns: 20% 60% 20%;
+  margin: auto;
+  max-width: 80%;
+}
+
+.grid4 {
+  display:grid;
+  grid-gap: 20px; 
+  grid-template-columns: 20% 40% 20% 20%;
+  text-align: right;
+  align-items: center;
+  max-width: 80%;
+}
+
+.viewbackground {background-color: lightgray;}
+.viewframe { border: 1px solid lightgray; border-radius: 4px};
