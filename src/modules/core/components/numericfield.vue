@@ -54,9 +54,8 @@ export default {
     let msg;
     let min, max;
     let age = props.age;
-    let valid = ref(inRangeCheck(age.value));
+    let valid = ref(inRangeCheck(age));
     
-
     min = props.minvalue;
     max = props.maxvalue;
     msg = props.message;
@@ -67,7 +66,7 @@ export default {
     }
     else{ 
       if(!isNaN(min)) { msg = props.message + ' Min:' + min; }
-      if(!isNaN(max)) { msg = props.message + ' Max:' + max; }
+      if(!isNaN(max)) { msg = props.message + ' Max: ' + max; }
     }
     console.log('************ ' + JSON.stringify(props));
     console.log("Component initialized", msg);

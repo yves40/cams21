@@ -4,6 +4,7 @@
 
   Jan 09 2022   Initial from vue2-vu3-testbed
   Jan 10 2022   WIP on parent child communication with Vue3
+  Jan 21 2022   WIP on parent child communication with Vue3, final update ?
   
 -->
 <template>
@@ -11,12 +12,9 @@
     <div class="moduletitle">{{Version}}</div>
     <div>
       <numericfield v-model:age="age" @isvalid="agevalid = $event" minvalue="10" maxvalue="120" message="Age :"/>
-      <!-- 
-      <numericfield v-model="age"  @isvalid="agevalid" minvalue="10" maxvalue="120" message="Age :"/>
-      <numericfield v-model="size" @isvalid="sizevalid" maxvalue="200" message="Size :"/>
-      <numericfield v-model="weight"  @isvalid="weightvalid" minvalue="30" message="Weight :"/>
-      <numericfield v-model="freezone" message="Free input :"/>
-      -->
+      <numericfield v-model:size="size" @isvalid="sizevalid = $event" maxvalue="200" message="Size :"/>
+      <numericfield v-model:weight="weight" @isvalid="sizevalid = $event" minvalue="30" message="Weight : :"/>
+      <numericfield v-model:freezone="freezone" message="Free input :"/>
       <button type="submit" :disabled='!buttonflag'>Ready to send</button>
       <div>
         <span>Result : </span>
@@ -44,7 +42,7 @@ export default {
   name: 'TesterNumfield',
   setup(props, context) {
 
-    let Version = 'TesterNumfield: 1.92, Jan 21 2022 '
+    let Version = 'TesterNumfield: 1.93, Jan 21 2022 '
 
     let age = ref(10);
     let agevalid = ref(false);
