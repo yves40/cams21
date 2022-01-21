@@ -7,6 +7,7 @@
   0ct 03 2019   Applink detection logic, fix
   Jan 09 2022   Import in cams21 for tests
   Jan 10 2022   WIP on parent child communication with Vue3
+  Jan 21 2022   WIP on parent child communication with Vue3, final update ?
 
 -->
 <template >
@@ -14,7 +15,10 @@
     <div class="grid2-60 viewframe">
       <span>{{msg}}</span>
       <div>
-        <input class="field" :class="theclass" type="text" v-model="thenumber"/>
+        <input 
+          class="field" :class="theclass" type="text" :value="age"
+          @input='$emit("update:age", $event.target.value)'
+        />
       </div>
     </div>
   </div>
@@ -27,11 +31,10 @@
 
 
 import { ref, computed, watch } from "vue";
-import { modelNumberWrapper } from "./modelNumberWrapper";
 
 export default {
   props: {
-    value: Number,
+    age: Number,
     maxvalue: String,
     minvalue: String,
     message: String
@@ -46,13 +49,13 @@ export default {
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numericfield: 2.60, Jan 10 2022 '
-    const thenumber = modelNumberWrapper(props, emit);
+    let Version = 'numericfield: 2.63, Jan 21 2022 '
     let error = "None";
     let msg;
     let min, max;
-    let valid = ref(inRangeCheck(thenumber.value));
-
+    let age = props.age;
+    let valid = ref(inRangeCheck(age.value));
+    
 
     min = props.minvalue;
     max = props.maxvalue;
@@ -83,13 +86,6 @@ export default {
     )
 
     //-----------------------------------------------------------------------
-    // Track user actions
-    //-----------------------------------------------------------------------
-    watch( [thenumber], ([ckey], [pkey]) => {
-      valid.value = inRangeCheck(thenumber.value)
-      console.log(`Change ***** ${thenumber.value}`);
-    })
-    //-----------------------------------------------------------------------
     // Check boundaries
     // Called on 1st load and then for each key input
     //-----------------------------------------------------------------------
@@ -115,7 +111,6 @@ export default {
     function getVersion() { return  Version;}
 
     return { 
-      thenumber,
       msg,
       theclass,
       error,

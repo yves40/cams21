@@ -10,7 +10,7 @@
 <div class="centered-form">
     <div class="moduletitle">{{Version}}</div>
     <div>
-      <numericfield v-model="age" @value="age = $event"  @isvalid="agevalid = $event" minvalue="10" maxvalue="120" message="Age :"/>
+      <numericfield v-model:age="age" @isvalid="agevalid = $event" minvalue="10" maxvalue="120" message="Age :"/>
       <!-- 
       <numericfield v-model="age"  @isvalid="agevalid" minvalue="10" maxvalue="120" message="Age :"/>
       <numericfield v-model="size" @isvalid="sizevalid" maxvalue="200" message="Size :"/>
@@ -44,7 +44,7 @@ export default {
   name: 'TesterNumfield',
   setup(props, context) {
 
-    let Version = 'TesterNumfield: 1.91, Jan 10 2022 '
+    let Version = 'TesterNumfield: 1.92, Jan 21 2022 '
 
     let age = ref(10);
     let agevalid = ref(false);
