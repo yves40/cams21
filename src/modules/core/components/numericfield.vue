@@ -16,8 +16,8 @@
       <span>{{msg}}</span>
       <div>
         <input 
-          class="field" :class="theclass" type="text" :value="age"
-          @input='$emit("update:age", $event.target.value)'
+          class="field" :class="theclass" type="text" :value="thenumber"
+          @input='$emit("thenumber", $event.target.value)'
         />
       </div>
     </div>
@@ -30,17 +30,22 @@
 /* eslint-disable vue/no-setup-props-destructure */
 
 
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
+
+export function submitValidator(thenumber) {
+  console.log("********* " + thenumber);
+  return typeof count !== 'string' && !isNaN(thenumber)
+}
 
 export default {
   props: {
-    age: Number,
+    initialvalue: Number,
     maxvalue: String,
     minvalue: String,
     message: String
   },
   emits: {
-    value: Number,
+    'thenumber': submitValidator,
     isvalid: Boolean
   },
   name: 'numericfield',
@@ -49,12 +54,12 @@ export default {
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numericfield: 2.63, Jan 21 2022 '
+    let Version = 'numericfield: 2.70, Jan 22 2022 '
     let error = "None";
     let msg;
     let min, max;
-    let age = props.age;
-    let valid = ref(inRangeCheck(age));
+    let thenumber = ref(props.initialvalue);
+    let valid = ref(inRangeCheck(thenumber));
     
     min = props.minvalue;
     max = props.maxvalue;
@@ -68,8 +73,6 @@ export default {
       if(!isNaN(min)) { msg = props.message + ' Min:' + min; }
       if(!isNaN(max)) { msg = props.message + ' Max: ' + max; }
     }
-    console.log('************ ' + JSON.stringify(props));
-    console.log("Component initialized", msg);
     // Control display class to be used 
     let theclass = computed( 
        () => {
@@ -110,6 +113,7 @@ export default {
     function getVersion() { return  Version;}
 
     return { 
+      thenumber,
       msg,
       theclass,
       error,
