@@ -14,13 +14,16 @@
     <div class="moduletitle">{{Version}}</div>
     <div>
       <numericfield v-model:initialvalue="age" @setnumber="age = $event" @isvalid="agevalid = $event" 
-          minvalue="12" maxvalue="120" message="Age :" />
+        minvalue="12" maxvalue="120" message="Age :" />
+      <numericfield v-model:initialvalue="size" @setnumber="size = $event" @isvalid="sizevalid = $event" 
+        maxvalue="200" message="Size :"/>
+      <numericfield v-model:initialvalue="weight" @setnumber="weight = $event" @isvalid="weightvalid = $event" 
+        minvalue="30" message="Weight :"/>
+      <numericfield v-model:initialvalue="freezone" @setnumber="freezone = $event" 
+        message="Free input :"/>
       <!-- 
-        <numericfield v-model:size="size" @isvalid="sizevalid = $event" maxvalue="200" message="Size :"/>
-        <numericfield v-model:weight="weight" @isvalid="weightvalid = $event" minvalue="30" message="Weight :"/>
-        <numericfield v-model:freezone="freezone" message="Free input :"/>
       -->
-      <p>Age : {{age}}</p>
+      <p>Age: {{age}} Size: {{size}} Weight: {{weight}} Free: {{freezone}}</p>
       <div>
         <span>Result : {{ thesum }}</span>
       </div>     
@@ -47,10 +50,10 @@ export default {
   name: 'Components tester',
   setup(props, context) {
 
-    let Version = 'componentstester: 2.04, Jan 23 2022 '
+    let Version = 'componentstester: 2.08, Jan 23 2022 '
 
     let age = ref(20);
-    let agevalid = ref(false);
+    let agevalid = ref(true);
     let size = ref(100);
     let sizevalid = ref(true);
     const weight = ref(100);
