@@ -8,6 +8,8 @@
   Jan 09 2022   Import in cams21 for tests
   Jan 10 2022   WIP on parent child communication with Vue3
   Jan 21 2022   WIP on parent child communication with Vue3, final update ?
+  Jan 22 2022   WIP on parent child communication with Vue3, final update ??
+  Jan 23 2022   WIP on parent child communication with Vue3, final update ???
 
 -->
 <template >
@@ -16,8 +18,7 @@
       <span>{{msg}}</span>
       <div>
         <input 
-          class="field" :class="theclass" type="text" :value="thenumber"
-          @input='$emit("thenumber", $event.target.value)'
+          class="field" :class="theclass" type="text" v-model="numberentry"
         />
       </div>
     </div>
@@ -27,15 +28,9 @@
 <script>
 
 /* eslint-disable no-unused-vars */
-/* eslint-disable vue/no-setup-props-destructure */
 
 
 import { ref, computed } from "vue";
-
-export function submitValidator(thenumber) {
-  console.log("********* " + thenumber);
-  return typeof count !== 'string' && !isNaN(thenumber)
-}
 
 export default {
   props: {
@@ -45,25 +40,56 @@ export default {
     message: String
   },
   emits: {
-    'thenumber': submitValidator,
+    'setnumber': null,
     isvalid: Boolean
   },
   name: 'numericfield',
+  computed: {
+    numberentry: 
+      {
+        get() { return parseInt(this.props.initialvalue) },
+        set(newValue) {
+          let a = newValue === "" ? 0 : newValue;
+          this.$emit("setnumber", parseInt(a));
+        }
+      },
+      theclass: 
+      {
+        get() {
+          let isvalid = true;
+          if(!isNaN(this.props.minvalue)&&!isNaN(this.props.maxvalue)) {
+            if( this.numberentry < this.props.minvalue || this.numberentry > this.props.maxvalue) isvalid = false;
+          }
+          else {
+            if(!isNaN(this.props.minvalue)) {
+              if(this.numberentry < this.props.minvalue) isvalid = false;
+            }
+            else {
+              if(!isNaN(this.props.maxvalue))
+                if(this.numberentry > this.props.maxvalue) isvalid = false;
+            }
+          }
+          this.$emit('isvalid', isvalid);
+          if (isvalid) { return 'isok'} else { return 'isko'}
+        }
+      }
+  },
    //-----------------------------------------------------------------------
   // Boot time ==> Setup
   //-----------------------------------------------------------------------
   setup(props, {emit} ) {
 
-    let Version = 'numericfield: 2.70, Jan 22 2022 '
+    let Version = 'numericfield: 2.88, Jan 23 2022 '
     let error = "None";
     let msg;
     let min, max;
-    let thenumber = ref(props.initialvalue);
-    let valid = ref(inRangeCheck(thenumber));
+    let valid = false;
     
-    min = props.minvalue;
-    max = props.maxvalue;
-    msg = props.message;
+    let properties = props;
+    min = properties.minvalue;
+    max = properties.maxvalue;
+    msg = properties.message;
+
 
     // Check min max if specified 
     if(!isNaN(min)&&!isNaN(max)) {
@@ -73,49 +99,15 @@ export default {
       if(!isNaN(min)) { msg = props.message + ' Min:' + min; }
       if(!isNaN(max)) { msg = props.message + ' Max: ' + max; }
     }
-    // Control display class to be used 
-    let theclass = computed( 
-       () => {
-        console.log(Version + ' Emit isvalid : ' + valid.value);
-        emit('isvalid', valid.value);
-         if (!valid.value) {
-            return 'isko'
-         }
-        else {
-            return 'isok'
-        }
-      }
-    )
 
-    //-----------------------------------------------------------------------
-    // Check boundaries
-    // Called on 1st load and then for each key input
-    //-----------------------------------------------------------------------
-    function inRangeCheck(number) {
-      let isvalid = true;
-      if(!isNaN(min)&&!isNaN(max)) {
-        if(number < min || number > max) isvalid = false;
-      }
-      else {
-        if(!isNaN(min)) {
-          if(number < min) isvalid = false;
-        }
-        else {
-          if(!isNaN(max))
-            if(number > max) isvalid = false;
-        }
-      }
-      return isvalid;
-    }
     //-----------------------------------------------------------------------
     // Just version
     //-----------------------------------------------------------------------
     function getVersion() { return  Version;}
 
     return { 
-      thenumber,
+      props,
       msg,
-      theclass,
       error,
       Version,
     }

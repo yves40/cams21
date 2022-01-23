@@ -13,19 +13,18 @@
 <div class="centered-form">
     <div class="moduletitle">{{Version}}</div>
     <div>
-      <numericfield v-model:initialvalue="age" @thenumber="gotit" @isvalid="agevalid = $event" minvalue="12" maxvalue="120" message="Age :"/>
+      <numericfield v-model:initialvalue="age" @setnumber="age = $event" @isvalid="agevalid = $event" 
+          minvalue="12" maxvalue="120" message="Age :" />
       <!-- 
         <numericfield v-model:size="size" @isvalid="sizevalid = $event" maxvalue="200" message="Size :"/>
         <numericfield v-model:weight="weight" @isvalid="weightvalid = $event" minvalue="30" message="Weight :"/>
         <numericfield v-model:freezone="freezone" message="Free input :"/>
       -->
       <p>Age : {{age}}</p>
-      <p>The number : {{thenumber}}</p>
-      <button type="submit" :disabled='!buttonflag'>Ready to send</button>
       <div>
-        <span>Result : </span>
-        <span>{{ thesum }}</span>
+        <span>Result : {{ thesum }}</span>
       </div>     
+      <button type="submit" :disabled='!buttonflag'>Ready to send</button>
     </div>
 </div>
 
@@ -37,7 +36,7 @@
 
 import numericfield from "../components/numericfield"
 
-import { onMounted, ref, computed, onUnmounted, watchEffect } from "vue";
+import { onMounted, ref, computed, onUnmounted } from "vue";
 
 export default {
   props: {
@@ -45,20 +44,19 @@ export default {
   components: {
     numericfield,
   },
-  name: 'TesterNumfield',
+  name: 'Components tester',
   setup(props, context) {
 
-    let Version = 'componentstester: 1.97, Jan 23 2022 '
+    let Version = 'componentstester: 2.04, Jan 23 2022 '
 
-    let thenumber = 0;
-    let age = ref(30);
+    let age = ref(20);
     let agevalid = ref(false);
-    let size = ref(175);
+    let size = ref(100);
     let sizevalid = ref(true);
     const weight = ref(100);
     let weightvalid = ref(true);
     let freezone = ref(100);
-    let thesum = computed( () => age.value+size.value+weight.value+freezone.value);
+    let thesum = computed( () => age.value + size.value + weight.value + freezone.value);
     let buttonflag = computed( () => agevalid.value && sizevalid.value && weightvalid.value );
 
     // Test lifecycle handlers
@@ -69,32 +67,11 @@ export default {
        })
     onMounted(() =>  {console.info(Version + 'Mounted');})
     
-    //-----------------------------------------------------------------------
-    // Track user actions
-    //-----------------------------------------------------------------------
-    watchEffect( [age, agevalid, size, sizevalid, weight, weightvalid], ([currentage, currentagevalid, currentsize, currentsizevalid, currentweight, currentweightvalid], 
-                                              [prevage, prevagevalid, prevsize, prevsizevalid, prevweight, prevweightvalid]) => {
-      console.log(Version + currentage + "/" + prevage + ' Age valid:' + agevalid.value);
-      console.log(Version + currentsize + "/" + prevsize + ' Size valid:' + sizevalid.value);
-    })
-
-    // Check button 
-    function readyTogo() {
-      console.log('****************** ' + agevalid.value);
-      return agevalid.value;
-    }
-
-    function gotit( number ){
-      console.log("===== " + number);
-    }
-
     // Utilities
     function getVersion() { return  Version; }
 
     return { 
       age,
-      thenumber,
-      gotit,
       agevalid,
       size,
       sizevalid,
